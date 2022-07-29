@@ -2,6 +2,7 @@ const express = require("express");
 const UserController = require ("./controllers/userController");
 const SellerController = require("./controllers/sellerController");
 const ProductController = require("./controllers/productController");
+const SearchController = require("./controllers/searchController");
 
 const routes = express.Router();
 
@@ -22,5 +23,8 @@ routes.post("/product/create", ProductController.store);
 routes.put("/product/:product_id/edit", ProductController.update);
 routes.delete("/product/:seller_id/:product_id/delete", ProductController.destroy);
 
+
+
+routes.get("/search", SearchController.index);
 
 module.exports = routes;
