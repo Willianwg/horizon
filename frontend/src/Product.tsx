@@ -13,7 +13,7 @@ export function Product(props:NameProps) {
        <Container>
         <image />
         <h2>{ props.name }</h2>
-        <h3>Price:{ props.price }</h3>
+        <h3>R${ props.price }</h3>
         <p>{ props.seller }</p>
         
        </Container>
