@@ -1,3 +1,5 @@
+import { styled } from "./stitches.config";
+
 type NameProps={
     name: string;
     price: number;
@@ -8,13 +10,17 @@ type NameProps={
 export function Product(props:NameProps) {
     return (
        
-       <div>
-       
+       <Container>
+        <image />
         <h2>{ props.name }</h2>
-        <h3>{ props.price }</h3>
-        <h3>{ props.seller }</h3>
+        <h3>Price:{ props.price }</h3>
+        <p>{ props.seller }</p>
         
-       </div>
+       </Container>
        
     )
 }
+
+const Container = styled("div",{
+    
+})
