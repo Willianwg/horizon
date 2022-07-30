@@ -13,6 +13,11 @@ const Category = database.define("category", {
         allowNull: false
     }
     
+},{
+    defaultScope:{
+        atributes:{ exclude:["products", "productcategory"] }
+    }
+    
 });
 
 

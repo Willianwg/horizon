@@ -1,29 +1,40 @@
 const Product = require("../models/product");
 const Seller = require("../models/seller");
+const Category = require ("../models/category");
 
 module.exports = {
 
     async store (req, res){
-        const { name, price, description, sellerId } = req.body;
+        
+        const { name, price, description, sellerId, categoryName } = req.body;
+        
+        const category =await Category.findAll({ where:{ name:categoryName }});
         
         const newProduct = await Product.create({
             name, price, description, sellerId
         });
         
+        await newProduct.setCategories(category);
+        
         return res.json(newProduct);
+        
     },
     
     async show (req, res){
+        
         const { product_id } = req.params;
-        const product = await Product.findByPk(product_id, { include:Seller});
+        const product = await Product.findByPk(product_id, { include:[Seller, Category]});
         
         return res.json(product);
+        
     },
     
     async index (req, res){
+        
         const productsList = await Product.findAll();
         
         return res.json(productsList);
+        
     },
     
     async update (req, res){
@@ -45,6 +56,7 @@ module.exports = {
     },
     
     async destroy (req, res){
+        
         const { product_id } = req.params;
         const product = await Product.findByPk(product_id);
         
