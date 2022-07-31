@@ -14,7 +14,9 @@ export function LandingPage(){
             <Container>
                 <Bar placeholder="Pesquisa Horizon.com"/>
                 <Button>©</Button>
-                <Product name="Ps5" price={4000} seller="Juan carlos"/>
+                <Product name="Ps5 em estado novo" price={4000} seller="Juan carlos"/>
+                <Product name="Cartão" price={2} seller="João"/>
+                
             </Container>
         </Page>
     )
@@ -22,22 +24,27 @@ export function LandingPage(){
 }
 
 const Header = styled("h1",{
-    fontFamily:"cursive",
+    fontFamily:"sans",
+    fontWeight:500,
     color:"white",
     height:20,
     fontSize:20,
+
 })
 
 const Container = styled("div",{
     
     height:500,
     backgroundColor:"lightGray",
-    padding:10
+    borderRadius:5,
     
 })
     
 const Page = styled("div",{
-  
+  backgorund:"red",
+  position:"fixed",
+  width:"100%",
+  height:"100%"
 })
 
 
@@ -46,6 +53,9 @@ const Bar = styled("input",{
     height:30,
     padding:2,
     width:"85%",
+    marginBottom:5,
+    paddingLeft:5,
+    boxSizing:"borderBox",
 })
 
 const Button = styled("button",{
