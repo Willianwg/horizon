@@ -1,15 +1,14 @@
 import { useState } from "react";
 import { Product } from "../Product";
-import { styled } from "../stitches.config";
-
-
+import { styled, globalStyles} from "../stitches.config";
 
 
 export function LandingPage(){
     
+    globalStyles();
     
     return (
-        <Page>
+        <>
             <Header>[®] HORIZON.com</Header>
             <Container>
                 <Bar placeholder="Pesquisa Horizon.com"/>
@@ -18,13 +17,13 @@ export function LandingPage(){
                 <Product name="Cartão" price={2} seller="João"/>
                 
             </Container>
-        </Page>
+        </>
     )
     
 }
 
 const Header = styled("h1",{
-    fontFamily:"sans",
+    fontFamily:["Noto","Sans","Serif"],
     fontWeight:500,
     color:"white",
     height:20,
@@ -35,7 +34,7 @@ const Header = styled("h1",{
 const Container = styled("div",{
     
     height:500,
-    backgroundColor:"lightGray",
+    backgroundColor:"white",
     borderRadius:5,
     
 })
@@ -53,9 +52,10 @@ const Bar = styled("input",{
     height:30,
     padding:2,
     width:"85%",
-    marginBottom:5,
+    margin:5,
+    marginRight:0,
     paddingLeft:5,
-    boxSizing:"borderBox",
+    alignSelf:"center",
 })
 
 const Button = styled("button",{
@@ -63,4 +63,5 @@ const Button = styled("button",{
     height:40,
     width:40,
     padding:2,
+    backgroundColor:"rgb(250,180,70)"
 })

@@ -14,7 +14,8 @@ export function Product(props:NameProps) {
          <DataContainer>
                 <Image />
             <Text>
-                <p >{ props.name }</p>
+                <ProductName>{ props.name }</ProductName>
+                <p>• • • • •</p>
                 <Price>R${ props.price }</Price>
                 <p>{ props.seller }</p>
             </Text>
@@ -28,36 +29,37 @@ const Container = styled("div",{
     width:"100%",
     display:"flex",
     height:100,
-    marginBottom:0,
+    marginBottom:10,
     
 })
 
-const Image = styled("div", {
-    height:"90%",
-    width:100,
+const Image = styled("img", {
+    height:"100%",
+    width:120,
     backgroundImage:"url(./IMG-20220730-WA0011.jpeg)",
     backgroundSize:"contain",
     backgroundRepeat:"repeat",
-    margin:5,
-    alignSelf:"center"
-    
- 
+    marginRight:10,
 });
 
 const Price = styled("h1",{
     fontSize:20,
     lineHeight:0,
+});
+
+const ProductName = styled("p",{
+    fontSize:16,
+    fontWeight:550,
 })
 
 const DataContainer = styled("div",{
-    background:"rgb(240,240,240)",
+    background:"white",
     overflow:"scroll",
     display:"flex",
     width:"100%",
-    borderRadius:10,
-    borderColor:"rgb(200,200,250)",
-    borderStyle:"solid",
-    borderWidth:2,
+    borderColor:"rgba(240,240,240,0.4)",
+    borderStyle:"ridge",
+    borderWidth:1,
     cursor:"pointer",
     height:100,
     
