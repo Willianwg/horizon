@@ -1,4 +1,5 @@
 import { styled } from "./stitches.config";
+import { AiFillStar } from "react-icons/ai";
 
 type NameProps={
     name: string;
@@ -15,9 +16,16 @@ export function Product(props:NameProps) {
                 <Image />
             <Text>
                 <ProductName>{ props.name }</ProductName>
-                <p>• • • • •</p>
+                <Seller>por: { props.seller }</Seller>
+                <Centralizer>
+               <Stars>
+                <p><AiFillStar color="orange"/></p>
+                <p><AiFillStar color="orange"/></p>
+                <p><AiFillStar color="orange"/></p>
+                <p><AiFillStar color="orange"/></p>
+               </Stars>
                 <Price>R${ props.price }</Price>
-                <p>{ props.seller }</p>
+                </Centralizer>
             </Text>
          </DataContainer>
        </Container>
@@ -45,19 +53,45 @@ const Image = styled("img", {
 const Price = styled("h1",{
     fontSize:20,
     lineHeight:0,
+    position:"absolute",
+    
+});
+
+const Stars = styled("ul",{
+    display:"flex",
+    height:20,
+    width:100,
+    padding:1,
+    lineHeight:0,
+   
 });
 
 const ProductName = styled("p",{
     fontSize:16,
     fontWeight:550,
+    lineHeight:0.5,
+});
+
+const Centralizer = styled("div",{
+    position:"relative",
+    bottom:22,
+});
+
+const Seller = styled("p",{
+    fontSize:12,
+    fontWeight:400,
+    lineHeight:0,
+    position:"relative",
+   
+   
 })
 
-const DataContainer = styled("div",{
+const DataContainer = styled("il",{
     background:"white",
-    overflow:"scroll",
+    overflow:"hidden",
     display:"flex",
     width:"100%",
-    borderColor:"rgba(240,240,240,0.4)",
+    borderColor:"rgba(240,240,240,0.2)",
     borderStyle:"ridge",
     borderWidth:1,
     cursor:"pointer",
@@ -66,5 +100,5 @@ const DataContainer = styled("div",{
 })
 
 const Text = styled("div",{
-    
+    contentHeight:10
 })
