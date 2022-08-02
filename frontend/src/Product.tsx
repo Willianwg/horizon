@@ -11,35 +11,25 @@ type NameProps={
 export function Product(props:NameProps) {
     return (
        
-       <Container>
+       
          <DataContainer>
                 <Image />
-            <Text>
+            <div>
                 <ProductName>{ props.name }</ProductName>
                 <Seller>por: { props.seller }</Seller>
-                <Centralizer>
                <Stars>
-                <p><AiFillStar color="orange"/></p>
-                <p><AiFillStar color="orange"/></p>
-                <p><AiFillStar color="orange"/></p>
-                <p><AiFillStar color="orange"/></p>
+                <AiFillStar color="orange"/>
+                <AiFillStar color="orange"/>
+                <AiFillStar color="orange"/>
+                <AiFillStar color="orange"/>
                </Stars>
                 <Price>R${ props.price }</Price>
-                </Centralizer>
-            </Text>
+            </div>
          </DataContainer>
-       </Container>
        
     )
 }
 
-const Container = styled("div",{
-    width:"100%",
-    display:"flex",
-    height:100,
-    marginBottom:10,
-    
-})
 
 const Image = styled("img", {
     height:"100%",
@@ -50,20 +40,15 @@ const Image = styled("img", {
     marginRight:10,
 });
 
-const Price = styled("h1",{
+const Price = styled("p1",{
     fontSize:20,
     lineHeight:0,
-    position:"absolute",
     
 });
 
-const Stars = styled("ul",{
+const Stars = styled("div",{
     display:"flex",
-    height:20,
-    width:100,
-    padding:1,
-    lineHeight:0,
-   
+    height:23,
 });
 
 const ProductName = styled("p",{
@@ -72,23 +57,15 @@ const ProductName = styled("p",{
     lineHeight:0.5,
 });
 
-const Centralizer = styled("div",{
-    position:"relative",
-    bottom:22,
-});
-
 const Seller = styled("p",{
     fontSize:12,
     fontWeight:400,
     lineHeight:0,
     position:"relative",
-   
-   
 })
 
-const DataContainer = styled("il",{
+const DataContainer = styled("div",{
     background:"white",
-    overflow:"hidden",
     display:"flex",
     width:"100%",
     borderColor:"rgba(240,240,240,0.2)",
@@ -96,9 +73,5 @@ const DataContainer = styled("il",{
     borderWidth:1,
     cursor:"pointer",
     height:100,
-    
-})
-
-const Text = styled("div",{
-    contentHeight:10
+    marginBottom:5,
 })
