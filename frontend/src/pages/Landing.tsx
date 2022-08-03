@@ -1,12 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Product } from "../Product";
 import { styled, globalStyles} from "../stitches.config";
 import { BiSearchAlt, BiUser } from "react-icons/bi";
 import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
-
+import api from "../services/api";
 
 
 export function LandingPage(){
+    
+    const [products, setProducts] = useState([]);
+    
+    useEffect(()=>{
+        
+        async function load(){
+            const response = await api.get("/product")
+            
+            setProducts(response.data);
+           
+        };
+        
+        load();
+        
+        
+    },[]);
+    
+    
     
     globalStyles();
     
@@ -22,11 +40,13 @@ export function LandingPage(){
             <Bar placeholder="Pesquisa Horizon.com"/>
             <Button><BiSearchAlt size={23}/></Button>
             <Container>
+            
+                {
+                    products.map(item=>{
+                        return <Product name={item.name} price={item.price} seller={item.seller.name}/>
+                    })
+                }
 
-
-                <Product name="Ps5 em estado novo" price={4000} seller="Juan carlos"/>
-                <Product name="Cartão" price={2} seller="João"/>
-                
             </Container>
         </>
     )

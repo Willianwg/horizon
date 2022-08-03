@@ -31,7 +31,7 @@ module.exports = {
     
     async index (req, res){
         
-        const productsList = await Product.findAll();
+        const productsList = await Product.findAll({ include:{model:Seller,attributes:["name"]}});
         
         return res.json(productsList);
         
