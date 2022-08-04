@@ -14,7 +14,14 @@ export function SingIn(){
                 <label>Email</label>
                 <Input />
                 <label>Password</label>
-                <Input />
+                <Input type="password"/>
+                
+                <label>Quero: </label>         
+                <select name="select">
+                    <option value="valor1" selected>Comprar</option>
+                    <option value="valor2">Vender</option>
+                </select>
+                
                 <Button>Submit</Button>
                </Form>
             </Container>
@@ -75,7 +82,7 @@ const Input = styled("input",{
 });
 
 const Button = styled("button",{
-    marginTop:30,
+  
     display:"block",
     height:50,
     width:100,
