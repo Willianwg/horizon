@@ -8,7 +8,7 @@ import api from "../services/api";
 
 export function LandingPage(){
     
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<object[]>([]);
     
     useEffect(()=>{
         
