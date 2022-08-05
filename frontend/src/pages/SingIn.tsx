@@ -1,28 +1,40 @@
 import { styled, globalStyles } from "../stitches.config";
-
+import { useState, Alert } from "react";
 
 export function SingIn(){
+    
+    const [name, setName] = useState<string>("");
+    const [email, setEmail] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [accountType, setAccountType] = useState<string>("Comprar");
+    
+    async function handleSubmit(event){
+        event.preventDefault();
+        
+    }
+    
+    
     globalStyles();
     
     return(
                 
           <Page>
             <Container>
-               <Form>
+               <Form onSubmit={handleSubmit}>
                 <label>Name</label>
-                <Input />
+                <Input onChange={ e=>setName(e.target.value) }/>
                 <label>Email</label>
-                <Input />
+                <Input onChange={ e=>setEmail(e.target.value) }/>
                 <label>Password</label>
-                <Input type="password"/>
+                <Input type="password" onChange={ e=>setPassword(e.target.value) }/>
                 
-                <label>Quero: </label>         
-                <select name="select">
-                    <option value="valor1" selected>Comprar</option>
-                    <option value="valor2">Vender</option>
+                <label>Quero: </label>
+                <select name="select" onChange={e=>setAccountType(e.target.value)}>
+                    <option value="Comprar" selected>Comprar</option>
+                    <option value="Vender">Vender</option>
                 </select>
                 
-                <Button>Submit</Button>
+                <Button type="submit">Submit</Button>
                </Form>
             </Container>
           </Page>
@@ -55,7 +67,7 @@ const Container = styled("div",{
     borderRadius:5,
 });
 
-const Form = styled("div",{
+const Form = styled("form",{
     
 });
 
