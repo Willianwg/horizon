@@ -2,9 +2,9 @@ import { styled } from "./stitches.config";
 import { AiFillStar } from "react-icons/ai";
 
 type NameProps={
-    name: string;
+    productName: string;
     price: number;
-    seller: string;
+    sellerName: string;
 }
 
 
@@ -15,8 +15,8 @@ export function Product(props:NameProps) {
          <DataContainer>
                 <Image />
             <div>
-                <ProductName>{ props.name }</ProductName>
-                <Seller>por: { props.seller }</Seller>
+                <ProductName>{ props.productName }</ProductName>
+                <Seller>por: { props.sellerName }</Seller>
                <Stars>
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>

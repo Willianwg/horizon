@@ -1,12 +1,15 @@
 import { styled, globalStyles } from "../stitches.config";
 import { useState, Alert } from "react";
 
+
+
+
 export function SingIn(){
     
-    const [name, setName] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [accountType, setAccountType] = useState<string>("Comprar");
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [accountType, setAccountType] = useState("Comprar");
     
     async function handleSubmit(event){
         event.preventDefault();

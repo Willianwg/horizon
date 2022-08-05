@@ -6,17 +6,32 @@ import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
 import api from "../services/api";
 
 
+
+type SellerProps ={
+    name:string;
+}
+
+type ProductProps ={
+    id:string;
+    name:string;
+    price:number;
+    description:string;
+    sellerId:number;
+    seller:SellerProps;
+    createdAt:string;
+    updatedAt:string;
+}
+
 export function LandingPage(){
     
-    const [products, setProducts] = useState<object[]>([]);
+    const [products, setProducts] = useState<ProductProps[]>([]);
     
     useEffect(()=>{
         
         async function load(){
-            const response = await api.get("/product")
+            const response = await api.get<ProductProps>("/product");
             
             setProducts(response.data);
-           
         };
         
         load();
@@ -42,8 +57,8 @@ export function LandingPage(){
             <Container>
             
                 {
-                    products.map(item=>{
-                        return <Product name={item.name} price={item.price} seller={item.seller.name}/>
+                    products.map(product=>{
+                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name}/>
                     })
                 }
 
