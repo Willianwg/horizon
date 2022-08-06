@@ -1,19 +1,34 @@
 import { styled, globalStyles } from "../stitches.config";
 import { useState, Alert } from "react";
-
-
-
+import { useNavigate } from "react-router-dom";
+import api from "../services/api";
 
 export function SingIn(){
+    let navigate = useNavigate();
     
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [accountType, setAccountType] = useState("Comprar");
     
+    
+    
     async function handleSubmit(event){
         event.preventDefault();
         
+        if(!name || !email || !password) return alert("Preencha todos os campos");
+        
+        const newAccount={
+            name,
+            email,
+            password
+        }
+        
+        const response= await api.post(accountType == "Comprar"?"/user":"/seller", newAccount);
+
+        alert(JSON.stringify(response.data));
+        
+        navigate("/");
     }
     
     

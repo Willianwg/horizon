@@ -8,7 +8,7 @@ const CategoryController = require("./controllers/categoryController");
 const routes = express.Router();
 
 // USER
-routes.post("/", UserController.store);
+routes.post("/user", UserController.store);
 routes.get("/user", UserController.show);
 routes.put("/user", UserController.update);
 

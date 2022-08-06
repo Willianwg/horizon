@@ -48,7 +48,7 @@ export function LandingPage(){
            <Header>
             <Logo>HORIZON.com</Logo>
             <Links>
-            <Click href="https://amazon.com/"><FaUserCircle size={23}/></Click>
+            <Click href="http://localhost:5173/singIn"><FaUserCircle size={23}/></Click>
             <Click href="https://amazon.com/"><FaShoppingCart size={23}/></Click>
             </Links>
            </Header>
