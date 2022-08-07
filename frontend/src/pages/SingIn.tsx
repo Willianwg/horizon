@@ -24,11 +24,20 @@ export function SingIn(){
             password
         }
         
-        const response= await api.post(accountType == "Comprar"?"/user":"/seller", newAccount);
-
-        alert(JSON.stringify(response.data));
+        try{
+            const response= await api.post(accountType == "Comprar"?"/user":"/seller", newAccount);
+            
+            const { id } = response.data;
+            
+            localStorage.setItem("userId", id);
+            
+            navigate("/");
+            
+        }catch(e){
+            return alert("Email já cadastrado");
+        }
+   
         
-        navigate("/");
     }
     
     

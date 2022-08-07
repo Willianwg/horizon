@@ -6,13 +6,16 @@ module.exports = {
     async store (req, res){
         
         const { name, email, password }= req.body;
+        
+        const user = await User.findOne({where:{ email }});
+        
+        if(user) return res.status(400).json({ error:"Email já está cadastrado" });
+        
         const newUser = await User.create({
             name,
             email,
             password
         });
-            
-        console.log(newUser);
         
         return res.json(newUser);
     },

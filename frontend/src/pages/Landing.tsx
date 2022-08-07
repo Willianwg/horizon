@@ -28,13 +28,22 @@ export function LandingPage(){
     
     useEffect(()=>{
         
-        async function load(){
+        function getUserId(){
+            const id = localStorage.getItem("userId");
+            
+            if(!id) return;
+            
+        }
+        
+        
+        async function loadProducts(){
             const response = await api.get<ProductProps>("/product");
             
             setProducts(response.data);
         };
         
-        load();
+        getUserId();
+        loadProducts();
         
         
     },[]);

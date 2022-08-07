@@ -7,6 +7,10 @@ module.exports = {
         
         const { name, email, password } = req.body;
         
+        const seller = await Seller.findOne({where:{ email }});
+        
+        if(seller) return res.status(400).json({ error:"Email já está cadastrado"});
+        
         const newSeller = await Seller.create({
             name, email, password
         });
