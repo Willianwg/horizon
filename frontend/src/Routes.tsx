@@ -6,6 +6,7 @@ import {
 
 import { LandingPage } from "./pages/Landing";
 import { SingIn } from "./pages/SingIn";
+import { Search } from "./pages/Search";
 
 export function AppRoutes(){
     
@@ -15,6 +16,7 @@ export function AppRoutes(){
         
           <Route path="/" element={ <LandingPage/> }/>
           <Route path="/singIn" element={ <SingIn/> }/>
+          <Route path="/search" element={ <Search/> }/>
           
         </Routes>
        </Router>
