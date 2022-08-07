@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import api from "../services/api";
 import { useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/SearchBar";
-
+import { Header } from "../components/Header";
+import { Product } from "../components/Product";
+import { styled, globalStyles} from "../stitches.config";
 
 type SellerProps ={
     name:string;
@@ -39,15 +41,26 @@ export function Search(){
     
     return (
         <>
+          <Header />
           <SearchBar />
+          <Container>
           {
              products.map(product=>{
-                 return <p>nome:{product.name} • price:{product.price}</p>
+                 return <Product key={product.id} productName={product.name} price={product.price} />
              })
           }
+          </Container>
         </>
         
         
     )
     
 }
+
+const Container = styled("div",{
+    
+    height:500,
+    backgroundColor:"white",
+    borderRadius:5,
+    
+})

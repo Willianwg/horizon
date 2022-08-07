@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Product } from "../Product";
+import { Product } from "../components/Product";
 import { styled, globalStyles} from "../stitches.config";
 import api from "../services/api";
 import { Header } from "../components/Header";
