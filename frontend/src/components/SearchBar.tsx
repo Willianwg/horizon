@@ -17,7 +17,9 @@ export function SearchBar(){
         
         if(!textWithoutEmptySpace) return;
         
-        navigate(`/search?=${textWithoutEmptySpace}`);
+        const unaccentedText = textWithoutEmptySpace.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+        
+        navigate(`/search?pname=${unaccentedText}`);
         
     }
     

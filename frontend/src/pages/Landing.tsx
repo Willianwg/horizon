@@ -35,7 +35,7 @@ export function LandingPage(){
         
         
         async function loadProducts(){
-            const response = await api.get<ProductProps>("/product");
+            const response = await api.get<ProductProps[]>("/product");
             
             setProducts(response.data);
         };
