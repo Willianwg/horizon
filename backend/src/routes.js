@@ -4,6 +4,7 @@ const SellerController = require("./controllers/sellerController");
 const ProductController = require("./controllers/productController");
 const SearchController = require("./controllers/searchController");
 const CategoryController = require("./controllers/categoryController");
+const Authentication = require("./middlewares/authentication");
 
 const routes = express.Router();
 
@@ -34,6 +35,10 @@ routes.get("/category",CategoryController.index);
 
 routes.post("/category/create", CategoryController.store);
 
+//AUTHENTICATION
+routes.get("/auth",Authentication.auth,(req,res)=>{
+    return res.json({ userId:req.userId })
+})
 
 
 

@@ -1,5 +1,5 @@
 const User = require ("../models/user");
-   // const database = require ("./index");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
     
@@ -17,7 +17,11 @@ module.exports = {
             password
         });
         
-        return res.json(newUser);
+        const token = jwt.sign({ id:newUser.id.toString() }, "Eu sou o milior", {
+            expiresIn:86400
+        })
+        
+        return res.json({newUser, token});
     },
     
     async show (req, res){
