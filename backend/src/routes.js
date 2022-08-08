@@ -4,6 +4,7 @@ const SellerController = require("./controllers/sellerController");
 const ProductController = require("./controllers/productController");
 const SearchController = require("./controllers/searchController");
 const CategoryController = require("./controllers/categoryController");
+const LoginController = require("./controllers/loginController");
 const Authentication = require("./middlewares/authentication");
 
 const routes = express.Router();
@@ -12,6 +13,7 @@ const routes = express.Router();
 routes.post("/user", UserController.store);
 routes.get("/user", UserController.show);
 routes.put("/user", UserController.update);
+routes.get("/login", LoginController.show);
 
 // SELLER
 routes.get("/seller/:seller_id", SellerController.show);
