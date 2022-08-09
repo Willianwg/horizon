@@ -6,6 +6,7 @@ const SearchController = require("./controllers/searchController");
 const CategoryController = require("./controllers/categoryController");
 const LoginController = require("./controllers/loginController");
 const Authentication = require("./middlewares/authentication");
+const AuthController = require ("./controllers/authController");
 
 const routes = express.Router();
 
@@ -38,9 +39,7 @@ routes.get("/category",CategoryController.index);
 routes.post("/category/create", CategoryController.store);
 
 //AUTHENTICATION
-routes.get("/auth",Authentication.auth,(req,res)=>{
-    return res.json({ userId:req.userId })
-})
+routes.get("/auth",Authentication.auth, AuthController.show);
 
 
 

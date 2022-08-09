@@ -1,9 +1,17 @@
 import { styled } from "../stitches.config";
 import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 
 export function Header(){
+    const auth = useContext(AuthContext);
+    
+    function handleText(e){
+        e.preventDefault();
+        
+        auth.logOut();
+    }
     
     return(
            <Container>

@@ -4,6 +4,8 @@ import { styled, globalStyles} from "../stitches.config";
 import api from "../services/api";
 import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 type SellerProps ={
     name:string;
@@ -21,18 +23,10 @@ type ProductProps ={
 }
 
 export function LandingPage(){
-    
+    const auth = useContext(AuthContext);
     const [products, setProducts] = useState<ProductProps[]>([]);
     
     useEffect(()=>{
-        
-        function getUserId(){
-            const id = localStorage.getItem("userId");
-            
-            if(!id) return;
-            
-        }
-        
         
         async function loadProducts(){
             const response = await api.get<ProductProps[]>("/product");
@@ -40,9 +34,7 @@ export function LandingPage(){
             setProducts(response.data);
         };
         
-        getUserId();
         loadProducts();
-        
         
     },[]);
     
@@ -53,6 +45,7 @@ export function LandingPage(){
     return (
         <>
           <Header />
+          { auth.user && <p>{ auth.user.name }</p> }
           <SearchBar />
           <Container>
             

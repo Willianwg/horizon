@@ -1,10 +1,14 @@
 import { styled, globalStyles } from "../stitches.config";
 import { useState, Alert } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../services/api";
+import { useApi } from "../services/api";
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
 export function SingIn(){
-    let navigate = useNavigate();
+    const auth = useContext(AuthContext);
+    
+    const navigate = useNavigate();
     
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -18,25 +22,11 @@ export function SingIn(){
         
         if(!name || !email || !password) return alert("Preencha todos os campos");
         
-        const newAccount={
-            name,
-            email,
-            password
-        }
+        const sucessfulCreate = await auth.createAccount(name, email, password, accountType);
         
-        try{
-            const response= await api.post(accountType == "Comprar"?"/user":"/seller", newAccount);
-            
-            const { id } = response.data;
-            
-            localStorage.setItem("userId", id);
-            
-            navigate("/");
-            
-        }catch(e){
-            return alert("Email já cadastrado");
-        }
-   
+        if(sucessfulCreate) return navigate("/");
+        
+        alert("Erro ao criar uma nova conta, certifique-se de usar um email não cadastrado.");
         
     }
     

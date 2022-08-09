@@ -21,7 +21,9 @@ module.exports = {
             expiresIn:86400
         })
         
-        return res.json({newUser, token});
+        console.log({newUser, token});
+        
+        return res.json({ user:newUser, token });
     },
     
     async show (req, res){
