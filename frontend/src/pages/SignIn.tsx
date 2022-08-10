@@ -5,7 +5,7 @@ import { useApi } from "../services/api";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 
-export function SingIn(){
+export function SignIn(){
     const auth = useContext(AuthContext);
     
     const navigate = useNavigate();

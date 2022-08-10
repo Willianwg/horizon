@@ -5,8 +5,9 @@ import {
 } from "react-router-dom";
 
 import { LandingPage } from "./pages/Landing";
-import { SingIn } from "./pages/SingIn";
+import { SignIn } from "./pages/SignIn";
 import { Search } from "./pages/Search";
+import { Login } from "./pages/Login";
 import { AuthProvider } from "./contexts/AuthProvider";
 
 export function AppRoutes(){
@@ -17,9 +18,10 @@ export function AppRoutes(){
         <Routes>
         
           <Route path="/" element={ <LandingPage/> }/>
-          <Route path="/singIn" element={ <SingIn/> }/>
+          <Route path="/signIn" element={ <SignIn/> }/>
+          <Route path="/logIn" element={ <Login/> }/>
           <Route path="/search" element={ <Search/> }/>
-          
+         
         </Routes>
        </AuthProvider>
        </Router>

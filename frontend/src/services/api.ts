@@ -25,9 +25,7 @@ export const useApi = ()=>({
             return response.data;
             
         }catch(e){
-            alert("falhou");
             return false;
-            
         }
         
     },
@@ -49,6 +47,17 @@ export const useApi = ()=>({
         }
         
         
+        
+    },
+    
+    async login(email:string, password:string){
+        
+        try{
+         const response = await api.get("/login",{ params:{ email, password } });
+         return response.data;
+        }catch(err){
+            return { error:"Error" }
+        }
         
     },
     

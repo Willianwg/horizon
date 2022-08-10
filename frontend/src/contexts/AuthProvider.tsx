@@ -54,7 +54,14 @@ export function AuthProvider ({ children }:{ children:JSX.Element }){
         
     }
     
-    async function logIn(email:string, password:string){
+    async function login(email:string, password:string){
+        
+        const data = await api.login(email, password)
+        
+        if(!data.user) return false;
+        
+        setUser(data.user);
+        setToken(data.token);
         
         return true
     }
@@ -72,7 +79,7 @@ export function AuthProvider ({ children }:{ children:JSX.Element }){
     }
     
     return(
-        <AuthContext.Provider value={{ user, createAccount, logIn, logOut }}>
+        <AuthContext.Provider value={{ user, createAccount, login, logOut }}>
            { children }
         </AuthContext.Provider>
         

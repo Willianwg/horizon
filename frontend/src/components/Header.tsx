@@ -1,13 +1,20 @@
 import { styled } from "../stitches.config";
 import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 
 export function Header(){
     const auth = useContext(AuthContext);
+    const navigate = useNavigate();
     
-    function handleText(e){
+    function logIn(e){
+        e.preventDefault();
+        
+        navigate("/login");
+    }
+    
+    function logOut(e){
         e.preventDefault();
         
         auth.logOut();
@@ -16,8 +23,16 @@ export function Header(){
     return(
            <Container>
             <Link to="/" style ={{ textDecoration:"none", cursor:"none" }}><Logo>HORIZON.com</Logo></Link>
+            <Options>
+              { auth.user && <h3>{ auth.user.name }</h3> }
+              { !auth.user?
+              <button onClick={logIn}>Login</button>
+              :
+              <button onClick={logOut}>Sair</button>
+              }
+            </Options>
             <Links>
-            <Click href="http://localhost:5173/singIn"><FaUserCircle size={23}/></Click>
+            <Click href="http://localhost:5173/signIn"><FaUserCircle size={23}/></Click>
             <Click href="https://amazon.com/"><FaShoppingCart size={23}/></Click>
             </Links>
            </Container>
@@ -51,3 +66,12 @@ const Click = styled("a",{
     color:"black",
     marginLeft:30,
 })
+
+const Options = styled("div", {
+    height:20,
+    alignItems:"center",
+    display:"flex",
+    justifyContent:"space-between",
+    paddingRight:15,
+    paddingLeft:10,
+});

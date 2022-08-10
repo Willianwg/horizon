@@ -23,7 +23,6 @@ type ProductProps ={
 }
 
 export function LandingPage(){
-    const auth = useContext(AuthContext);
     const [products, setProducts] = useState<ProductProps[]>([]);
     
     useEffect(()=>{
@@ -45,7 +44,6 @@ export function LandingPage(){
     return (
         <>
           <Header />
-          { auth.user && <p>{ auth.user.name }</p> }
           <SearchBar />
           <Container>
             
