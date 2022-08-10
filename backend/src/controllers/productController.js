@@ -8,13 +8,13 @@ module.exports = {
         
         const { name, price, description, sellerId, categoryName } = req.body;
         
-        const category =await Category.findAll({ where:{ name:categoryName }});
+        //const category =await Category.findAll({ where:{ name:categoryName }});
         
         const newProduct = await Product.create({
             name, price, description, sellerId
         });
         
-        await newProduct.setCategories(category);
+       // await newProduct.setCategories(category);
         
         return res.json(newProduct);
         

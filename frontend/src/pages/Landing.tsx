@@ -49,7 +49,7 @@ export function LandingPage(){
             
                 {
                     products.map(product=>{
-                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name}/>
+                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} />
                     })
                 }
 

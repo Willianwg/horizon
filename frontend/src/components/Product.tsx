@@ -1,19 +1,24 @@
 import { styled } from "../stitches.config";
 import { AiFillStar } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 type NameProps={
     productName: string;
     price: number;
     sellerName: string;
+    id:number;
 }
 
 
 export function Product(props:NameProps) {
+    const navigate = useNavigate();
+    
+    const seeDetails = ()=> navigate(`/details/${props.id}`);
+    
     return (
        
-       
-         <DataContainer>
-                <Image />
+         <DataContainer onClick={ seeDetails }>
+            <Image />
             <div>
                 <ProductName>{ props.productName }</ProductName>
                 <Seller>por: { props.sellerName }</Seller>
@@ -34,7 +39,7 @@ export function Product(props:NameProps) {
 const Image = styled("img", {
     height:"100%",
     width:120,
-    backgroundImage:"url(./IMG-20220730-WA0011.jpeg)",
+    backgroundImage:"url(../IMG-20220730-WA0011.jpeg)",
     backgroundSize:"contain",
     backgroundRepeat:"repeat",
     marginRight:10,
@@ -43,18 +48,17 @@ const Image = styled("img", {
 const Price = styled("p1",{
     fontSize:20,
     lineHeight:0,
-    
 });
 
 const Stars = styled("div",{
     display:"flex",
-    height:23,
+    height:20,
 });
 
 const ProductName = styled("p",{
     fontSize:16,
     fontWeight:550,
-    lineHeight:0.5,
+    lineHeight:1,
 });
 
 const Seller = styled("p",{
@@ -72,6 +76,7 @@ const DataContainer = styled("div",{
     borderStyle:"ridge",
     borderWidth:1,
     cursor:"pointer",
-    height:100,
+    height:120,
     marginBottom:5,
+    overflow:"hidden",
 })

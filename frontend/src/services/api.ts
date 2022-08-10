@@ -63,6 +63,11 @@ export const useApi = ()=>({
     
     async logOut(){
         alert("deslogado com sucesso");
-    }
+    },
     
+    async getProductDetails(id:number){
+        const response = await api.get(`/product/${id}`);
+        
+        return response.data;
+    }
 })
