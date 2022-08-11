@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { styled, globalStyles} from "../stitches.config";
+import { Header } from "../components/Header";
 import { useApi } from "../services/api";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Details (){
     const api = useApi();
+    const navigate = useNavigate();
     const location = useLocation();
     const id = getIdFromUrl();
     
@@ -16,7 +18,6 @@ export function Details (){
             const data = await api.getProductDetails(id);
             
             setProduct(data);
-            alert(a);
         }
         
        loadProduct();
@@ -34,11 +35,21 @@ export function Details (){
     
     return (
         <Page>
+        <Header/>
         <Container>
          <ProductName>{product.name} <br/></ProductName>
          <Image />
-         Price:{product.price}
-         
+         <br/><br/>
+         Price: R${product.price}
+         <br/><br/><br/>
+         <label>Descrição:</label>
+         <br/>
+         { product.description }
+         <br/><br/>
+         <button onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</button>
+         <br/>
+         <br/>
+         <button>Adicionar ao carrinho</button>
         </Container>
         </Page>
     )
@@ -46,7 +57,6 @@ export function Details (){
 
 const Page = styled("div",{
     display:"grid",
-    height:"100%",
     height:"100vh",
     alignItems:"center",
 });
