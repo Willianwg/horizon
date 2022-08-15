@@ -37,19 +37,15 @@ export function Details (){
         <Page>
         <Header/>
         <Container>
-         <ProductName>{product.name} <br/></ProductName>
+         <ProductName>{product.name}</ProductName>
          <Image />
-         <br/><br/>
-         Price: R${product.price}
-         <br/><br/><br/>
-         <label>Descrição:</label>
-         <br/>
-         { product.description }
-         <br/><br/>
-         <button onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</button>
-         <br/>
-         <br/>
-         <button>Adicionar ao carrinho</button>
+         <Price>R${product.price}</Price>
+         <Description>
+           <p>Descrição:</p>
+           <p>{ product.description }</p>
+         </Description>
+         <Button onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</Button>
+         <Button>Adicionar ao carrinho</Button>
         </Container>
         </Page>
     )
@@ -62,10 +58,11 @@ const Page = styled("div",{
 });
 
 const Container = styled("div",{
-    height:600,
+    height:650,
     width:"90%",
     background:"white",
     margin:"auto",
+    padding:5,
     
 });
 
@@ -77,5 +74,26 @@ const Image = styled("img",{
 });
 
 const ProductName = styled("h3", {
+    textWeight:800,
+    marginLeft:5,
+})
+
+const Button = styled("button",{
+    borderRadius:5,
+    width:"100%",
+    padding:3,
+    margin:"8px 0px",
+    height:50,
+    fontWeight:700,
+});
+
+const Price = styled("h3", {
+    textWeight:800,
+    fontSize:40,
+    lineHeight:0,
+    
+})
+
+const Description = styled("p", {
     
 })
