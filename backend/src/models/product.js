@@ -22,9 +22,22 @@ const Product = database.define("product", {
     description:{
         type: sequelize.STRING,
         allowNull: false
+    },
+    imageName:{
+        type:sequelize.STRING
+    },
+    imageType:{
+        type:sequelize.STRING
+    },
+    imageData:{
+        type:sequelize.BLOB("long")
     }
     
 });
+
+
+
+
 
 Product.belongsTo(Seller, {
     constraint:true
