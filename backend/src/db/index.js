@@ -1,6 +1,7 @@
+require("dotenv").config()
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("fxrozocn","fxrozocn","R4-MWFJ5DJ-SdZp_is5Ugh65wS4Aj5JT",{ dialect:"postgres", host:"rosie.db.elephantsql.com"
+const sequelize = new Sequelize(process.env.DATABASE_DB, process.env.DATABASE_USERNAME, process.env.DATABASE_PASSWORD,{ dialect:process.env.DATABASE_DIALECT, host:process.env.DATABASE_HOST
 }
 );
 
