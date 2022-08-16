@@ -42,5 +42,19 @@ routes.post("/category/create", CategoryController.store);
 routes.get("/auth",Authentication.auth, AuthController.show);
 
 
+// IMAGE TEST
+
+const multer = require("multer");
+const uploadConfig= require("./config/upload");
+const upload = multer(uploadConfig);
+
+const uploadController = require("./controllers/uploadController");
+
+routes.post("/upload", upload.single("image"), uploadController.store);
+routes.get("/upload", uploadController.index);
+
+
+
+
 
 module.exports = routes;

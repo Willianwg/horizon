@@ -11,6 +11,7 @@ import { Login } from "./pages/Login";
 import { Checkout } from "./pages/Checkout";
 import { Details } from "./pages/ProductDetails";
 import { AuthProvider } from "./contexts/AuthProvider";
+import { ImageTest } from "./pages/ImageTest";
 
 export function AppRoutes(){
     
@@ -25,6 +26,8 @@ export function AppRoutes(){
           <Route path="/search" element={ <Search/> }/>
           <Route path="/details/:id" element={ <Details/> }/>
           <Route path="/details/:id/checkout" element={ <Checkout/> }/>
+          <Route path="/image" element={ <ImageTest/> }/>
+        
         </Routes>
        </AuthProvider>
        </Router>

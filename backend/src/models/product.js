@@ -23,14 +23,8 @@ const Product = database.define("product", {
         type: sequelize.STRING,
         allowNull: false
     },
-    imageName:{
+    image:{
         type:sequelize.STRING
-    },
-    imageType:{
-        type:sequelize.STRING
-    },
-    imageData:{
-        type:sequelize.BLOB("long")
     }
     
 });
