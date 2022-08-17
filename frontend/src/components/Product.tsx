@@ -18,7 +18,7 @@ export function Product(props:NameProps) {
     return (
        
          <DataContainer onClick={ seeDetails }>
-            <Image />
+            <Image style={{ backgroundImage:`url(http://localhost:3000/files/${props.url})`}}/>
             <div>
                 <ProductName>{ props.productName }</ProductName>
                 <Seller>por: { props.sellerName }</Seller>
@@ -39,8 +39,7 @@ export function Product(props:NameProps) {
 const Image = styled("img", {
     height:"100%",
     width:120,
-    backgroundImage:"url(../IMG-20220730-WA0011.jpeg)",
-    backgroundSize:"contain",
+    backgroundSize:"cover",
     backgroundRepeat:"repeat",
     marginRight:10,
 });

@@ -38,7 +38,7 @@ export function Details (){
         <Header/>
         <Container>
          <ProductName>{product.name}</ProductName>
-         <Image />
+         <Image style={{ backgroundImage:`url(http://localhost:3000/files/${product.image})` }}/>
          <Price>R${product.price}</Price>
          <Description>
            <p>Descrição:</p>
@@ -69,8 +69,8 @@ const Container = styled("div",{
 const Image = styled("img",{
     height:300,
     width:"100%",
-    background:"url(../IMG-20220730-WA0011.jpeg)",
     backgroundSize:"cover",
+    border:"1px ridge lightGrey"
 });
 
 const ProductName = styled("h3", {

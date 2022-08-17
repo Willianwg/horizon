@@ -6,15 +6,16 @@ module.exports = {
 
     async store (req, res){
         
-        const { name, price, description, sellerId, categoryName } = req.body;
-        
+        const { name, price, description, sellerId } = req.body;
+        const { filename } = req.file
         //const category =await Category.findAll({ where:{ name:categoryName }});
         
         const newProduct = await Product.create({
-            name, price, description, sellerId
+            name, price, description, sellerId, image:filename
         });
         
-       // await newProduct.setCategories(category);
+        //await newProduct.setCategories(category);
+        console.log(newProduct);
         
         return res.json(newProduct);
         

@@ -49,7 +49,7 @@ export function LandingPage(){
             
                 {
                     products.map(product=>{
-                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} />
+                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image}/>
                     })
                 }
 
@@ -61,8 +61,6 @@ export function LandingPage(){
 
 const Container = styled("div",{
     
-    height:500,
-    backgroundColor:"white",
     borderRadius:5,
     
 })

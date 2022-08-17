@@ -46,7 +46,7 @@ export function Search(){
           <Container>
           {
              products.map(product=>{
-                 return <Product key={product.id} productName={product.name} price={product.price} />
+                 return <Product key={ product.id } productName={ product.name } price={ product.price } id={ product.id } url={ product.image }/>
              })
           }
           </Container>
