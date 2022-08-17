@@ -17,7 +17,7 @@ export function Product(props:NameProps) {
     
     return (
        
-         <DataContainer onClick={ seeDetails }>
+         <DataContainer onClick={ seeDetails } >
             <Image style={{ backgroundImage:`url(http://localhost:3000/files/${props.url})`}}/>
             <div>
                 <ProductName>{ props.productName }</ProductName>
@@ -41,7 +41,9 @@ const Image = styled("img", {
     width:120,
     backgroundSize:"cover",
     backgroundRepeat:"repeat",
+    backgroundPosition:"center",
     marginRight:10,
+    
 });
 
 const Price = styled("p1",{
@@ -74,8 +76,15 @@ const DataContainer = styled("div",{
     borderColor:"rgba(240,240,240,0.2)",
     borderStyle:"ridge",
     borderWidth:1,
-    cursor:"pointer",
+    cursor:"auto",
     height:120,
     marginBottom:5,
     overflow:"hidden",
+    userSelect:"none",
+    
+    "&:active":{
+        backgroundColor:"rgba(100,200,100,0.3)",
+        
+    },
+    
 })

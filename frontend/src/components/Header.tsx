@@ -42,8 +42,7 @@ export function Header(){
 const Container = styled("div",{
   display:"grid",
   width:"100%",
-  height:"100%",
- 
+  height:80,
 })
 
 const Logo = styled("h1",{

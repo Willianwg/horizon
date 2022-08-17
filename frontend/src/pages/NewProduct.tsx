@@ -89,6 +89,7 @@ const Image = styled("img", {
     width: "100%",
     height: 200,
     backgroundSize: "cover",
+    backgroundPosition:"center",
     marginBottom:12,
 })
 

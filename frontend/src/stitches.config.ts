@@ -15,9 +15,12 @@ export const globalStyles = globalCss({
         borderSizing:"borderBox"
         
     }
-    
 });
 
 export const { styled, css } = createStitches({
+    
+    media:{
+      sm:"(max-width: 600px)"
+    }
     
 });
