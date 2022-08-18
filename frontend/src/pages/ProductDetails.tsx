@@ -46,13 +46,13 @@ export function Details (){
                 <AiFillStar color="orange"/>
                </Stars>
          <Image style={{ backgroundImage:`url(http://localhost:3000/files/${product.image})` }}/>
-         <Price>R${product.price}</Price>
+         <Price><C>R$</C>{product.price}</Price>
          <Description>
            <p>Descrição:</p>
            <p>{ product.description }</p>
          </Description>
-         <Button onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</Button>
-         <Button>Adicionar ao carrinho</Button>
+         <Button color="dark" onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</Button>
+         <Button color="light" >Adicionar ao carrinho</Button>
         </Container>
         </Page>
     )
@@ -67,7 +67,7 @@ const Stars = styled("div",{
 const Page = styled("div",{
     height:"100%",
     position:"absolute",
-    width:"100%"
+    width:"100%",
 });
 
 const Container = styled("div",{
@@ -103,20 +103,40 @@ const ProductName = styled("h4", {
 
 const Button = styled("button",{
     borderRadius:5,
+    borderWidth:0,
     width:"100%",
     padding:3,
     margin:"8px 0px",
     height:70,
-    fontWeight:700,
+    fontWeight:500,
+    color:"white",
+    fontSize:18,
+    variants:{
+        color:{
+            dark:{
+                background:"rgb(100,150,250)",
+            },
+            light:{
+                background:"rgb(100,190,250)",
+            }
+        }
+    }
 });
 
 const Price = styled("h3", {
-    textWeight:800,
+    fontWeight:600,
     fontSize:40,
     lineHeight:0,
-    
+    fontFamily:"Serif",
 })
 
 const Description = styled("p", {
     fontWeight:300,
+})
+
+const C = styled("span", {
+    fontWeight:400,
+    fontSize:30,
+    marginRight:1,
+    fontFamily:"Arial",
 })

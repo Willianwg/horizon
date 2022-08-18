@@ -83,7 +83,7 @@ const DataContainer = styled("div",{
     userSelect:"none",
     
     "&:active":{
-        backgroundColor:"rgba(100,200,100,0.3)",
+        backgroundColor:"rgba(100,190,250, 0.3)",
         
     },
     

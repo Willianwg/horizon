@@ -5,9 +5,6 @@ import { globalCss } from "@stitches/react";
 
 
 export const globalStyles = globalCss({
-    "*":{
-        fontFamily:"Gotham Sans Serif",
-    },
     body:{
         background:"rgb(245,245,245)",
         margin:0,

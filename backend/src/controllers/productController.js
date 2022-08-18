@@ -10,8 +10,20 @@ module.exports = {
         const { filename } = req.file
         //const category =await Category.findAll({ where:{ name:categoryName }});
         
+        let formatedPrice = price;
+        
+        if(formatedPrice.indexOf(",") !== -1){
+            formatedPrice = price.replace(",", ".");
+        }
+        
+        if(formatedPrice.indexOf(".") !== -1){
+            formatedPrice = parseFloat(formatedPrice);
+        }
+        
+        
+        
         const newProduct = await Product.create({
-            name, price, description, sellerId, image:filename
+            name, price:formatedPrice, description, sellerId, image:filename
         });
         
         //await newProduct.setCategories(category);
