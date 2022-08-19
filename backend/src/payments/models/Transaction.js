@@ -62,27 +62,27 @@ const Transaction = database.define("transaction",{
         type:sequelize.STRING
     },
     
-    boletoAdress:{
+    billingAdress:{
         type:sequelize.STRING
     },
     
-    boletoNumber:{
+    billingNumber:{
         type:sequelize.STRING
     },
     
-    boletoNeighborhood:{
+    billingNeighborhood:{
         type:sequelize.STRING
     },
     
-    boletoCity:{
+    billingCity:{
         type:sequelize.STRING
     },
     
-    boletoState:{
+    billingState:{
         type:sequelize.STRING
     },
     
-    boletoZipCode:{
+    billingZipCode:{
         type:sequelize.STRING
     }
     

@@ -23,7 +23,7 @@ module.exports = {
        const { 
            
            cartCode, paymentType, installments,
-           boletoAdress, boletoNumber, boletoNeighborhood, boletoCity, boletoState, boletoZipCode,
+           billingAdress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode,
            customerName, customerEmail, customerMobile, customerDocument,
            creditCardNumber, creditCardExpiration, creditCardHolderName, creditCardCvv
            
@@ -31,13 +31,11 @@ module.exports = {
        
        
        const customer = { customerName, customerEmail, customerMobile, customerDocument }
-       const boleto = { boletoAdress, boletoNumber, boletoNeighborhood, boletoCity, boletoState, boletoZipCode }
+       const billing = { billingAdress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode }
        const creditCard = { creditCardNumber, creditCardExpiration, creditCardHolderName, creditCardCvv }
        
-       const transactionCreationResponse = await TransactionService.process({ cartCode, paymentType, installments, customer, boleto, creditCard });
-       
-       
-       
+       const service = new TransactionService();
+       const transactionCreationResponse = await service.process({ cartCode, paymentType, installments, customer, billing, creditCard });
        
        return res.json(transactionCreationResponse);
    },

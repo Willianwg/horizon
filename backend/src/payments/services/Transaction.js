@@ -1,13 +1,18 @@
 const Cart = require("../models/Cart");
 const Transaction = require("../models/Transaction");
+const PagarmeProvider = require("../providers/pagarme");
 
-
-
-module.exports= {
+class TransactionService {
+    paymentProvider;
+    
+    constructor(paymentProvider){
+        this.paymentProvider = paymentProvider || PagarmeProvider;
+    }
+    
     
     async process(data){
         
-        const { customer, cartCode, paymentType, installments, boleto, creditCard } = data;
+        const { customer, cartCode, paymentType, installments, billing, creditCard } = data;
         
         console.log(customer)
         console.log("Interior de customer:", {...customer })
@@ -24,13 +29,21 @@ module.exports= {
             installments,
             status:"started",
             ...customer,
-            ...boleto,
+            ...billing,
             
         })
+        
+        
+       const { code, total } = transaction;
+       console.log("jsjsjsiesnesj")
+       
+       const response = await this.paymentProvider.process({ paymentType, installments, customer, billing, creditCard, transactionCode:code, total });
+       
         
         return transaction;
         
     }
     
-    
 }
+
+module.exports = TransactionService;
