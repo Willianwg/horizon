@@ -4,6 +4,7 @@ async function connection(){
     const Seller = require("../models/seller");
     const Product = require("../models/product");
     const Cart = require("../payments/models/Cart");
+    const Transaction = require("../payments/models/Transaction");
     
     await database.sync();
     

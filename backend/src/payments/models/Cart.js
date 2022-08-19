@@ -4,11 +4,16 @@ const database = require("../../db/index");
 const Cart = database.define("cart",{
     
     id:{
-      primaryKey:true,
       type:sequelize.INTEGER,
-      autoIncrement:true,
       allowNull:false,
-      unique:true,
+      primaryKey:true,
+      autoIncrement:true
+    },
+    
+    code:{
+      type:sequelize.STRING,
+      allowNull:false,
+      unique:true
     },
     
     price:{
