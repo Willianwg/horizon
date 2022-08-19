@@ -8,6 +8,9 @@ const LoginController = require("./controllers/loginController");
 const Authentication = require("./middlewares/authentication");
 const AuthController = require ("./controllers/authController");
 
+const CartController = require("./payments/controllers/cartController");
+const TransactionController = require("./payments/controllers/transactionController");
+
 const multer = require("multer");
 const uploadConfig= require("./config/upload");
 const upload = multer(uploadConfig);
@@ -46,5 +49,16 @@ routes.post("/category/create", CategoryController.store);
 routes.get("/auth",Authentication.auth, AuthController.show);
 
 
+// CART && TRANSACTION
+
+routes.post("/cart", CartController.store);
+routes.get("/cart", CartController.index);
+routes.get("/cart/:id", CartController.show);
+routes.put("/cart/:id", CartController.update);
+routes.delete("/cart/:id", CartController.destroy);
+
+routes.post("/transaction", TransactionController.store);
+routes.get("/transaction/:id", TransactionController.show);
+routes.get("/transaction", TransactionController.index);
 
 module.exports = routes;
