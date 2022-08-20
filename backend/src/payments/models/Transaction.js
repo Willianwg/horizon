@@ -62,7 +62,7 @@ const Transaction = database.define("transaction",{
         type:sequelize.STRING
     },
     
-    billingAdress:{
+    billingAddress:{
         type:sequelize.STRING
     },
     

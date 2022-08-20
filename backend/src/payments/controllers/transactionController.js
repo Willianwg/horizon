@@ -23,7 +23,7 @@ module.exports = {
        const { 
            
            cartCode, paymentType, installments,
-           billingAdress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode,
+           billingAddress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode,
            customerName, customerEmail, customerMobile, customerDocument,
            creditCardNumber, creditCardExpiration, creditCardHolderName, creditCardCvv
            
@@ -31,7 +31,7 @@ module.exports = {
        
        
        const customer = { customerName, customerEmail, customerMobile, customerDocument }
-       const billing = { billingAdress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode }
+       const billing = { billingAddress, billingNumber, billingNeighborhood, billingCity, billingState, billingZipCode }
        const creditCard = { creditCardNumber, creditCardExpiration, creditCardHolderName, creditCardCvv }
        
        const service = new TransactionService();
