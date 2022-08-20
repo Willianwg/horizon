@@ -19,34 +19,8 @@ module.exports = {
           const register = await hooks.registerClient({ clientData, billing });
           clientId = register.id;
         }
-      
-        const [monthMM, yearYY] = creditCard.creditCardExpiration.split("/");
         
-        const today = hooks.getCurrentDate();
+        const payment = hooks.applyPayment({ clientData, clientId, paymentType, installments, transactionCode, total, creditCard });
         
-        const transactionData = {
-          customer: clientId,
-          billingType: paymentType.toUpperCase(),
-          dueDate: today,
-          totalValue: total,
-          installmentCount: installments,
-          description: 'Pedido na plataforma Horizon',
-          externalReference: transactionCode,
-          creditCard: {
-            holderName: creditCard.creditCardHolderName,
-            number: creditCard.creditCardNumber,
-            expiryMonth: monthMM ,
-            expiryYear: '20' + yearYY,
-            ccv: creditCard.creditCardCvv
-          },
-          creditCardHolderInfo: {
-            ...clientData
-          }
-        }
-        
-        
-        
-        
-        console.log(transactionData);
     }
 }

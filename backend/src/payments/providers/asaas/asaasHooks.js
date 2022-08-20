@@ -1,23 +1,19 @@
+const api = require("../../services/api");
 
+const token = process.env.SANDBOX_TOKEN;
 
 
 module.exports = {
     
     async searchClient( cpfCnpj ){
         
+        const listClientsURL = `https://sandbox.asaas.com/api/v3/customers?cpfCnpj=${ cpfCnpj }`;
         
-        const requisition = ()=>{
-            
-            if(cpfCnpj === '52084444888'){
-              return { totalCount:1, data:[{ id:"seuId"}] }
-            }
-            
-            return { totalCount:0, data:[] };
-        };
+        const response = await api.get( listClientsURL, { headers:{ access_token:token } } );
         
+        const { data } = response.data;
         
-        const response = requisition();
-        const { data } = response;
+        console.log("RESPOSTA DA LISTA:", data[0]);
         
         return data.length > 0 ? data[0] : false;
         
@@ -39,6 +35,36 @@ module.exports = {
         const { id } = response;
         
         return { id, clientData };
+        
+    },
+    
+    async applyPayment({ clientId, clientData, paymentType, installments, transactionCode, total, creditCard }){
+        
+        const [monthMM, yearYY] = creditCard.creditCardExpiration.split("/");
+        
+        const today = this.getCurrentDate();
+        
+        const transactionData = {
+          customer: clientId,
+          billingType: paymentType.toUpperCase(),
+          dueDate: today,
+          totalValue: total,
+          installmentCount: installments,
+          description: 'Pedido na plataforma Horizon',
+          externalReference: transactionCode,
+          creditCard: {
+            holderName: creditCard.creditCardHolderName,
+            number: creditCard.creditCardNumber,
+            expiryMonth: monthMM ,
+            expiryYear: '20' + yearYY,
+            ccv: creditCard.creditCardCvv
+          },
+          creditCardHolderInfo: {
+            ...clientData
+          }
+        }
+        
+        console.log(transactionData);
         
     },
     
