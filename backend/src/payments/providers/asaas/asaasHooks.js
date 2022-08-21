@@ -13,8 +13,6 @@ module.exports = {
         
         const { data } = response.data;
         
-        console.log("RESPOSTA DA LISTA:", data[0]);
-        
         return data.length > 0 ? data[0] : false;
         
     },
@@ -44,6 +42,9 @@ module.exports = {
     
     async applyPayment({ clientId, clientData, paymentType, installments, transactionCode, total, creditCard }){
         
+        const paymentURL = `https://sandbox.asaas.com/api/v3/payments`;
+        
+        
         const [monthMM, yearYY] = creditCard.creditCardExpiration.split("/");
         
         const today = this.getCurrentDate();
@@ -68,7 +69,11 @@ module.exports = {
           }
         }
         
-        console.log(transactionData);
+        const response = await api.post( paymentURL, transactionData, { headers:{ access_token:token } } );
+        const { data } = response;
+        console.log("VENDA REALIZADA COM SUCESSO!!", data);
+        
+        return data;
         
     },
     
