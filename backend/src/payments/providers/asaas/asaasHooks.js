@@ -21,6 +21,8 @@ module.exports = {
     
     async registerClient ({ clientData, billing }){
         
+        const registerClientURL = `https://sandbox.asaas.com/api/v3/customers`;
+          
         const registerConfig = {
             notificationDisabled: false,
             observations: 'Cliente HORIZON'
@@ -31,8 +33,10 @@ module.exports = {
             ...registerConfig
         }
         
-        const response = { id:"123e" };
-        const { id } = response;
+        const response = await api.post( registerClientURL, registerData, { headers:{ access_token:token } } );
+        const { id } = response.data;
+        
+        console.log("REGISTRADO COM SUCESSO! ID:", id);
         
         return { id, clientData };
         
