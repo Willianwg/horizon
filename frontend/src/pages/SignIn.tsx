@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useApi } from "../services/api";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import { Input } from "../styles/styles";
 
 export function SignIn(){
     const auth = useContext(AuthContext);
@@ -100,15 +101,6 @@ const Picture = styled("img",{
     
 });
 
-const Input = styled("input",{
-    display:"block",
-    width:280,
-    height:30,
-    marginBottom:15,
-    border:"1px black solid",
-    padding:5,
-    
-});
 
 const Button = styled("button",{
   
