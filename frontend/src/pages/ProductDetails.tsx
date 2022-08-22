@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 import { useApi } from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
-
+import { Button } from "../styles/styles";
 export function Details (){
     const api = useApi();
     const navigate = useNavigate();
@@ -52,7 +52,7 @@ export function Details (){
            <p>{ product.description }</p>
          </Description>
          <Button color="dark" onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</Button>
-         <Button color="light" >Adicionar ao carrinho</Button>
+         <Button>Adicionar ao carrinho</Button>
         </Container>
         </Page>
     )
@@ -101,27 +101,6 @@ const ProductName = styled("h4", {
     height:5,
 })
 
-const Button = styled("button",{
-    borderRadius:5,
-    borderWidth:0,
-    width:"100%",
-    padding:3,
-    margin:"8px 0px",
-    height:70,
-    fontWeight:500,
-    color:"white",
-    fontSize:18,
-    variants:{
-        color:{
-            dark:{
-                background:"rgb(100,150,250)",
-            },
-            light:{
-                background:"rgb(100,190,250)",
-            }
-        }
-    }
-});
 
 const Price = styled("h3", {
     fontWeight:600,

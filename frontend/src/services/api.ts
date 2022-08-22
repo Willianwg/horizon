@@ -69,5 +69,21 @@ export const useApi = ()=>({
         const response = await api.get(`/product/${id}`);
         
         return response.data;
-    }
+    },
+    
+    
+    
+    
+    async pay(){
+          const time = ()=>(new Promise((resolve, reject) => {
+            setTimeout(resolve, 10000)
+          }))
+          
+          await time();
+          
+          return alert("Compra realizada com sucesso");
+          
+     },
+        
+   
 })

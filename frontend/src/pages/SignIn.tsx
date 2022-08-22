@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useApi } from "../services/api";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Input } from "../styles/styles";
+import { Input, Button } from "../styles/styles";
 
 export function SignIn(){
     const auth = useContext(AuthContext);
@@ -52,7 +52,7 @@ export function SignIn(){
                     <option value="Vender">Vender</option>
                 </select>
                 
-                <Button type="submit">Submit</Button>
+                <Button size="small" type="submit" css={{ display:"block",marginLeft:"auto" }}>Submit</Button>
                </Form>
             </Container>
           </Page>
@@ -102,13 +102,3 @@ const Picture = styled("img",{
 });
 
 
-const Button = styled("button",{
-  
-    display:"block",
-    height:50,
-    width:100,
-    color:"white",
-    background:"orange",
-    marginLeft:"auto",
-    fontWeight:900,
-});
