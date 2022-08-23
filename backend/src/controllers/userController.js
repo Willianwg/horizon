@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
-const Provider = require("../repositories/Postgres");
+const UserRepository = require("../repositories/Postgres/User");
 
 function UserController(repository) {
     
-    const database = repository || new Provider();
+    const database = repository || new UserRepository();
     
     async function store (req, res){
         
         const { name, email, password }= req.body;
         
-        const user = await database.findUserByEmail(email);
+        const user = await database.findOneUser({ email });
         
         if(user) return res.status(400).json({ error:"Email já está cadastrado" });
         
@@ -43,14 +43,10 @@ function UserController(repository) {
         }
         
         const { id, name, email } = req.body;
-        let user = await database.findUserById(id);
         
-        user.name = name;
-        user.email = email;
+        const updatedUser = await database.editUser(id, name);
         
-        await user.save()
-        
-        return res.json(user);
+        return res.json(updatedUser);
         
     }
     

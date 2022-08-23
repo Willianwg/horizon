@@ -1,7 +1,7 @@
-const User = require ("../models/user");
+const User = require ("../../models/user");
 
 
-class PostgresRepository {
+class UserPGRepository {
     
     async createUser(name, email, password){
         
@@ -14,9 +14,9 @@ class PostgresRepository {
         return newUser;
     }
     
-    async findUserByEmail(email){
+    async findOneUser(query){
         
-        const user = await User.findOne({where:{ email }});
+        const user = await User.findOne({ where:query });
         
         return user;
         
@@ -29,7 +29,18 @@ class PostgresRepository {
        return user;
     }
     
+    async editUser(id,name){
+        
+        let user = await User.findByPk(id);
+        
+        user.name = name;
+        
+        await user.save()
+        
+        return user;
+        
+    }
     
 }
 
-module.exports = PostgresRepository;
+module.exports = UserPGRepository;

@@ -1,31 +1,35 @@
-const Seller = require("../models/seller");
-const Product = require("../models/product");
+const SellerRepository = require("../repositories/Postgres/Seller");
 
-module.exports = {
+function SellerController(repository){
+    const database = repository || new SellerRepository();
     
-    async store (req, res){
+    async function store (req, res){
         
         const { name, email, password } = req.body;
         
-        const seller = await Seller.findOne({where:{ email }});
+        const seller = await database.findOneSeller({ email });
         
         if(seller) return res.status(400).json({ error:"Email já está cadastrado"});
         
-        const newSeller = await Seller.create({
-            name, email, password
-        });
+        const newSeller = await database.createSeller(name, email, password);
         
         return res.json(newSeller);
         
-    },
+    }
     
-    async show (req, res){
+    async function show (req, res){
         const { seller_id } = req.params;
-        const seller = await Seller.findByPk(seller_id, { include:Product });
+        const seller = await database.findSellerById(seller_id);
         
         return res.json(seller);
     
         
     }
     
+    return {
+        store, show
+    }
+    
 }
+
+module.exports = SellerController;

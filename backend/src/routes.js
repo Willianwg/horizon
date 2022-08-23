@@ -18,24 +18,31 @@ const upload = multer(uploadConfig);
 const routes = express.Router();
 
 
-const userController = UserController();
+
 // USER
+const userController = UserController();
+
 routes.post("/user", userController.store);
 routes.get("/user", userController.show);
 routes.put("/user", userController.update);
 routes.get("/login", LoginController.show);
 
 // SELLER
-routes.get("/seller/:seller_id", SellerController.show);
-routes.post("/seller", SellerController.store );
+const sellerController = SellerController();
+
+routes.get("/seller/:seller_id", sellerController.show);
+routes.post("/seller", sellerController.store );
+
 
 
 // PRODUCT
-routes.get("/product", ProductController.index);
-routes.get("/product/:product_id", ProductController.show);
-routes.post("/product/create", upload.single("image"), ProductController.store);
-routes.put("/product/:product_id/edit", ProductController.update);
-routes.delete("/product/:seller_id/:product_id/delete", ProductController.destroy);
+const productController = ProductController();
+
+routes.get("/product", productController.index);
+routes.get("/product/:product_id", productController.show);
+routes.post("/product/create", upload.single("image"), productController.store);
+routes.put("/product/:product_id/edit", productController.update);
+routes.delete("/product/:seller_id/:product_id/delete", productController.destroy);
 
 // SEARCH
 routes.get("/search", SearchController.index);
