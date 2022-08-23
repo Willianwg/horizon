@@ -17,10 +17,12 @@ const upload = multer(uploadConfig);
 
 const routes = express.Router();
 
+
+const userController = UserController();
 // USER
-routes.post("/user", UserController.store);
-routes.get("/user", UserController.show);
-routes.put("/user", UserController.update);
+routes.post("/user", userController.store);
+routes.get("/user", userController.show);
+routes.put("/user", userController.update);
 routes.get("/login", LoginController.show);
 
 // SELLER

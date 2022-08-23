@@ -1,45 +1,41 @@
-const User = require ("../models/user");
 const jwt = require("jsonwebtoken");
+const Provider = require("../repositories/Postgres");
 
-module.exports = {
+function UserController(repository) {
     
-    async store (req, res){
+    const database = repository || new Provider();
+    
+    async function store (req, res){
         
         const { name, email, password }= req.body;
         
-        const user = await User.findOne({where:{ email }});
+        const user = await database.findUserByEmail(email);
         
         if(user) return res.status(400).json({ error:"Email já está cadastrado" });
         
-        const newUser = await User.create({
-            name,
-            email,
-            password
-        });
+        const newUser = await database.createUser(name,email,password);
         
-        const token = jwt.sign({ id:newUser.id.toString() }, "Eu sou o milior", {
+        const token = jwt.sign({ id:newUser.id.toString() }, process.env.JWT_SECRET, {
             expiresIn:86400
         })
         
-        console.log({newUser, token});
-        
         return res.json({ user:newUser, token });
-    },
+    }
     
-    async show (req, res){
+    async function show (req, res){
         
         if(!req.body.id){ 
             return res.status(400).json({ message:"Não foi fornecido o ID de usuário"});
         }
         
         const { id } = req.body;
-        const user = await User.findByPk(id);
+        const user = await database.findUserById(id);
         
         return res.json(user);
         
-    },
+    }
     
-    async update (req, res){
+    async function update (req, res){
         
         
         if(!req.body.id){ 
@@ -47,7 +43,7 @@ module.exports = {
         }
         
         const { id, name, email } = req.body;
-        let user = await User.findByPk(id);
+        let user = await database.findUserById(id);
         
         user.name = name;
         user.email = email;
@@ -59,4 +55,10 @@ module.exports = {
     }
     
     
+    return {
+        update, show, store
+    }
+    
 }
+
+module.exports = UserController;
