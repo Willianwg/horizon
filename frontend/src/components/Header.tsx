@@ -32,7 +32,7 @@ export function Header(){
               }
             </Options> }
             <Links>
-            <Click href="http://localhost:5173/signIn">{ auth.user && <Span>{ auth.user.name }</Span>}<FaUserCircle size={23} color="rgba(250,250,250,0.9)"/></Click>
+            <Click href={ auth.user?`http://localhost:5173/user/1`:"http://localhost:5173/signIn" }>{ auth.user && <Span>{ auth.user.name }</Span>}<FaUserCircle size={23} color="rgba(250,250,250,0.9)"/></Click>
             <Click href="https://amazon.com/"><FaShoppingCart size={23} color="rgba(250,250,250,0.9)"/></Click>
             </Links>
            </Container>

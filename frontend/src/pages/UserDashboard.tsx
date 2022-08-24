@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { useSearchParams } from "react-router-dom";
 import { SearchBar } from "../components/SearchBar";
 import { Header } from "../components/Header";
 import { Product } from "../components/Product";
@@ -17,13 +16,12 @@ type ProductProps ={
     description:string;
     sellerId:number;
     seller:SellerProps;
+    image:string;
     createdAt:string;
     updatedAt:string;
-    image:string;
 }
 
-export function Search(){
-    const [searchParams] = useSearchParams();
+export function User(){
     
     const [products, setProducts] = useState<ProductProps[]>([]);
     
@@ -31,23 +29,35 @@ export function Search(){
         
         async function loadProducts(){
             
-        const response = await api.get<ProductProps[]>(`/search?${ searchParams }`);
-        setProducts(response.data);
-           
+         const test = [{
+                id:12,
+                name:"produto",
+                price:50.99,
+                description:"descricao teste",
+                sellerId:12,
+                seller:{ name:"Willian"},
+                createdAt:"wksodjdk",
+                updatedAt:"sjdkdjdisi",
+                image:"Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
+            }]
+            
+            setProducts(test);
+            
+            
         }
         
         loadProducts();
         
-    },[searchParams])
+    },[])
     
     return (
         <>
           <Header />
-          <SearchBar />
+          <Label>Suas compras</Label>
           <Container>
           {
              products.map(product=>{
-                 return <Product key={ product.id } productName={ product.name } price={ product.price }  id={ product.id } url={ product.image }/>
+                 return <Product key={ product.id } productName={ product.name } sellerName={product.seller.name} price={ product.price } id={ product.id } url={ product.image }/>
              })
           }
           </Container>
@@ -64,4 +74,10 @@ const Container = styled("div",{
     backgroundColor:"white",
     borderRadius:5,
     
+})
+
+const Label= styled("h3",{
+    
+   marginLeft:15,
+   
 })

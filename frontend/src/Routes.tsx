@@ -12,6 +12,8 @@ import { Checkout } from "./pages/Checkout";
 import { Details } from "./pages/ProductDetails";
 import { AuthProvider } from "./contexts/AuthProvider";
 import { NewProduct } from "./pages/NewProduct";
+import { User } from "./pages/UserDashboard";
+
 
 export function AppRoutes(){
     
@@ -23,6 +25,8 @@ export function AppRoutes(){
           <Route path="/" element={ <LandingPage/> }/>
           <Route path="/signIn" element={ <SignIn/> }/>
           <Route path="/logIn" element={ <Login/> }/>
+          <Route path="/user/:id" element={ <User/> }/>
+        
           <Route path="/search" element={ <Search/> }/>
           <Route path="/details/:id" element={ <Details/> }/>
           <Route path="/details/:id/checkout" element={ <Checkout/> }/>
