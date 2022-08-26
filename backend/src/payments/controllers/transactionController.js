@@ -19,7 +19,7 @@ module.exports = {
    
     
    async store(req, res){
-       
+       console.log("entrou");
        const { 
            
            cartCode, paymentType, installments,

@@ -74,15 +74,16 @@ export const useApi = ()=>({
     
     
     
-    async pay(){
-          const time = ()=>(new Promise((resolve, reject) => {
-            setTimeout(resolve, 10000)
-          }))
+    async pay(transactionData){
+        try{
+        const response = await api.post("/transaction", transactionData )
+        
+        return response.data;
           
-          await time();
-          
-          return alert("Compra realizada com sucesso");
-          
+        }catch(err){
+            alert(err);
+        }
+         
      },
         
    

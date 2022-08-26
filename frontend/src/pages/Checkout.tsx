@@ -78,9 +78,36 @@ export function Checkout (){
         
         setStage(3);
         
-        const response = await api.pay();
+        const transactionData = formatData();
+        const response = await api.pay(transactionData);
         
         navigate("/");
+    }
+    
+    function formatData(){
+        
+         const content = {
+              cartCode: '171',
+              paymentType: 'credit_card',
+              installments: 1,
+              customerName: name,
+              customerEmail: email,
+              customerMobile: phone,
+              customerDocument: document,
+              billingAddress: street,
+              billingNumber: houseNumber,
+              billingNeighborhood: neighborhood,
+              billingCity: city,
+              billingState: state,
+              billingZipCode: zipCode,
+              creditCardNumber: cardNumber,
+              creditCardExpiration: cardExpiration,
+              creditCardHolderName: cardHolderName,
+              creditCardCvv:cardCvv
+        }
+        
+        return content;
+        
     }
     
     return (
