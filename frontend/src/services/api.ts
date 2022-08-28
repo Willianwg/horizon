@@ -72,7 +72,22 @@ export const useApi = ()=>({
     },
     
     
-    
+    async generateCart(price){
+        
+        const code = Math.random().toString();
+        
+        const data ={
+            price,
+            code
+        }
+        
+        
+        const response = await api.post("/cart", data);
+        
+        return response.data;
+        
+        
+    },
     
     async pay(transactionData){
         try{

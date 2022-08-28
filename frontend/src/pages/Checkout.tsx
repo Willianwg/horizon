@@ -31,7 +31,10 @@ export function Checkout (){
     
     const [price, setPrice] = useState(0);
     
+    const [cartCode, setCartCode] = useState("");
+    
     const [processing, setProcessing] = useState(false);
+    
     
     useEffect(()=>{
         const id = location.pathname.split("/")[2];
@@ -43,6 +46,10 @@ export function Checkout (){
             const data = await api.getProductDetails(id);
             
             setPrice(data.price);
+            
+            const response = await api.generateCart(data.price);
+            
+            setCartCode(response.code);
         }
         
        loadProduct();
@@ -87,7 +94,7 @@ export function Checkout (){
     function formatData(){
         
          const content = {
-              cartCode: '171',
+              cartCode,
               paymentType: 'credit_card',
               installments: 1,
               customerName: name,
