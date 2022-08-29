@@ -33,6 +33,8 @@ export function Checkout (){
     
     const [cartCode, setCartCode] = useState("");
     
+    const [installments, setInstallments] = useState(1);
+    
     const [processing, setProcessing] = useState(false);
     
     
@@ -96,7 +98,7 @@ export function Checkout (){
          const content = {
               cartCode,
               paymentType: 'credit_card',
-              installments: 1,
+              installments,
               customerName: name,
               customerEmail: email,
               customerMobile: phone,
@@ -115,6 +117,28 @@ export function Checkout (){
         
         return content;
         
+    }
+    
+    function installmentValue(){
+        
+        const value = price/installments;
+        
+        
+        return value.toFixed(2);
+    }
+    
+    function installmentOptions(){
+        
+        let a=[];
+        
+        for (let i = 1; i <= 10; i++) {
+            a.push(i);
+        }
+        
+        
+        
+       return a;
+       
     }
     
     return (
@@ -143,6 +167,7 @@ export function Checkout (){
          </div>
          </>
          }
+         
          { stage === 2 &&
          <div>
           <h3>Credit Card</h3>
@@ -151,12 +176,19 @@ export function Checkout (){
           <Input  placeholder="Credit Expiration (MM/YY)" onChange={ e=> setExpiration(e.target.value) }/>
           <Input type="number" placeholder="Credit Card Cvv" onChange={ e=> setCardCvv(e.target.value) }/>
           
-          <h4>Valor: { price }</h4>
+          <select name="select" onChange={e=>setInstallments(e.target.value)}>
+          
+           { installmentOptions().map( item =>  <option value={item}>{item}x</option> ) }
+           
+          </select>
+           
+          <h4>Valor: {installments}x { installmentValue() }</h4>
           
           <Button type="submit" css={{ alignSelf:"bottom"}}>Comprar</Button>
        
           </div>
          }
+         
         { stage === 3 &&
          <div>
           <h3>Processando pagamento...</h3>
