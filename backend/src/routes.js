@@ -21,11 +21,12 @@ const routes = express.Router();
 
 // USER
 const userController = UserController();
+const loginController = LoginController();
 
 routes.post("/user", userController.store);
 routes.get("/user", userController.show);
 routes.put("/user", userController.update);
-routes.get("/login", LoginController.show);
+routes.get("/login", loginController.show);
 
 // SELLER
 const sellerController = SellerController();

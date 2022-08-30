@@ -1,12 +1,14 @@
-const User = require ("../models/user");
+const UserRepository = require("../repositories/Postgres/User");
 const jwt = require("jsonwebtoken");
 
-module.exports = {
+function LoginController(repository){
     
-    async show(req, res){
+    const database = repository || new UserRepository();
+    
+    async function show(req, res){
         const { email, password } = req.query;
         
-        const user = await User.findOne({ where:{ email }});
+        const user = await database.findOneUser({ email });
         
         if(!user) return res.status(401).json({ error:"User does not exists" });
         
@@ -25,4 +27,9 @@ module.exports = {
         return res.json({ user:userData, token });
     }
     
+    return {
+        show
+    }
 }
+
+module.exports = LoginController;
