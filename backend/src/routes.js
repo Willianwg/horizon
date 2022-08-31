@@ -17,8 +17,6 @@ const upload = multer(uploadConfig);
 
 const routes = express.Router();
 
-
-
 // USER
 const userController = UserController();
 const loginController = LoginController();
@@ -27,6 +25,13 @@ routes.post("/user", userController.store);
 routes.get("/user", userController.show);
 routes.put("/user", userController.update);
 routes.get("/login", loginController.show);
+
+const GetUserProducts = require ("./controllers/getUserProducts");
+const getUserProducts = GetUserProducts();
+
+
+routes.get("/user/:id/products", getUserProducts.execute);
+
 
 // SELLER
 const sellerController = SellerController();

@@ -1,4 +1,5 @@
 const User = require ("../../models/user");
+const Product = require ("../../models/product");
 
 
 class UserPGRepository {
@@ -39,6 +40,14 @@ class UserPGRepository {
         
         return user;
         
+    }
+    
+    async getUserProducts(userId){
+        //let user = await User.findByPk(userId, { include:Product });
+        
+        const user = { products:[{ price:1000, name:"nike"}] };
+        
+        return user.products;
     }
     
 }

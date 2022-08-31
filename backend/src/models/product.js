@@ -1,5 +1,6 @@
 const sequelize = require("sequelize");
 const database = require("../db/index");
+const User = require("./user");
 const Seller = require("./seller");
 const Category = require ("./category");
 const ProductCategory = require("./productcategory");
@@ -29,9 +30,9 @@ const Product = database.define("product", {
     
 });
 
-
-
-
+User.hasMany(Product, {
+    constraint:true
+})
 
 Product.belongsTo(Seller, {
     constraint:true

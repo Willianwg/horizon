@@ -100,6 +100,11 @@ export const useApi = ()=>({
         }
          
      },
-        
-   
+     
+     async getUserProducts(id:number){
+         const response = await api.get(`/user/${id}/products`);
+         
+         return response.data;
+     }
+     
 })
