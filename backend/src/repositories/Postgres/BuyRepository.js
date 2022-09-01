@@ -3,7 +3,7 @@
 class BuyPGRepository {
     
     async execute({ userId, productId }){
-
+        
     }
     
 }
