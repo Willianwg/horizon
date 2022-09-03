@@ -1,19 +1,30 @@
+const jwt = require("jsonwebtoken");
 
-class createUserController {
+function CreateUserController(createUser) {
+
+    this.createUser = createUser;
     
-    constructor(userCreate){
-        this.userCreate = userCreate;
-    }
-    
-    async handle(req, res){
+    async function handle(req, res){
         
         const { name, email, password } = req.body;
         
-        const user = userCreate.execute({ name, email, password });
+        const user = await this.createUser.execute({ name, email, password });
         
-        return res.json(user);
+        if(!user) return res.json({ error:"User already exists"});
         
+        const token = jwt.sign({ id:user.id }, process.env.JWT_SECRET, {
+            expiresIn:86400
+        })
+        
+        return res.json({ user, token });
+        
+    }
+    
+    
+    return {
+        handle
     }
     
 }
 
+module.exports = CreateUserController;

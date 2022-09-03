@@ -1,4 +1,3 @@
-const crypto = require("crypto");
 
 class CreateUserUseCase {
     
@@ -8,17 +7,15 @@ class CreateUserUseCase {
     
     async execute({ name, email, password }){
         
-        const user = { name, email, password };
+        const exists = await this.database.findOneUser({ email });
         
-        Object.assign(user, { 
-            
-            id:crypto.randomUUID()
-            
-        });
+        if(exists){
+            return false;
+        }
         
-        test = this.database.createUser(user);
+        const user = await this.database.createUser(name, email, password );
         
-        return test;
+        return user;
     }
     
 }

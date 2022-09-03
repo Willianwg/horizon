@@ -18,10 +18,17 @@ const upload = multer(uploadConfig);
 const routes = express.Router();
 
 // USER
+
+const factory = require("./createUser/createUserFactory");
+
+const controll = factory();
+
+
 const userController = UserController();
 const loginController = LoginController();
 
-routes.post("/user", userController.store);
+routes.post("/user", controll.handle);
+//routes.post("/user", userController.store);
 routes.get("/user", userController.show);
 routes.put("/user", userController.update);
 routes.get("/login", loginController.show);

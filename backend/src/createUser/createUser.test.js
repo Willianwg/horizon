@@ -3,11 +3,32 @@ const InMemoryRepository = require("../repositories/InMemoryRepository");
 
 describe("Testando criacao de usuario", ()=>{
     
+    let repository;
+    let createUser;
+    
+    beforeAll(()=>{
+        
+       repository = new InMemoryRepository();
+        
+       createUser = new CreateUser(repository);
+     
+    })
+    
     it("Usuario deve ser criado com sucesso", async ()=>{
         
-        const repository = new InMemoryRepository();
+           
+        const data ={
+            name:"Test",
+            email:"test@test.com",
+            password:"abc"
+        }
         
-        const userCreate = new CreateUser(repository);
+        const user = await createUser.execute(data);
+        
+        expect(user).toHaveProperty("id");
+    });
+    
+    it("Nao deve ser possivel criar usuario", async()=>{
         
         const data ={
             name:"Test",
@@ -15,9 +36,14 @@ describe("Testando criacao de usuario", ()=>{
             password:"abc"
         }
         
-        const user = await userCreate.execute(data);
+        await createUser.execute(data);
         
-        expect(user).toHaveProperty("id");
+        let result
+
+ 
+        const user = await createUser.execute(data);
+     
+        expect(user).toEqual(false);
+        
     })
-    
 })
