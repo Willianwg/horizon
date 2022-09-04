@@ -19,16 +19,16 @@ const routes = express.Router();
 
 // USER
 
-const factory = require("./createUser/createUserFactory");
+//const factory = require("./useCases/createUser/createUserFactory");
 
-const controll = factory();
+//const controll = factory();
 
 
 const userController = UserController();
 const loginController = LoginController();
 
-routes.post("/user", controll.handle);
-//routes.post("/user", userController.store);
+//routes.post("/user", controll.handle);
+routes.post("/user", userController.store);
 routes.get("/user", userController.show);
 routes.put("/user", userController.update);
 routes.get("/login", loginController.show);
@@ -82,5 +82,12 @@ routes.delete("/cart/:id", CartController.destroy);
 routes.post("/transaction", TransactionController.store);
 routes.get("/transaction/:id", TransactionController.show);
 routes.get("/transaction", TransactionController.index);
+
+// Salvar compra
+
+const savePurchaseFactory = require("./useCases/savePurchase/savePurchaseFactory");
+const savePurchaseController = savePurchaseFactory();
+
+routes.post("/buy/:productId", savePurchaseController.handle )
 
 module.exports = routes;

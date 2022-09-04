@@ -1,5 +1,5 @@
 const CreateUser = require("./createUserUseCase");
-const InMemoryRepository = require("../repositories/InMemoryRepository");
+const UserRepository = require("../../repositories/inMemory/UserRepository");
 
 describe("Testando criacao de usuario", ()=>{
     
@@ -8,7 +8,7 @@ describe("Testando criacao de usuario", ()=>{
     
     beforeAll(()=>{
         
-       repository = new InMemoryRepository();
+       repository = new UserRepository();
         
        createUser = new CreateUser(repository);
      

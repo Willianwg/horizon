@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 
-class InMemoryRepository {
+class UserRepository {
     
     users = [];
     
@@ -43,4 +43,4 @@ class InMemoryRepository {
     }
 }
 
-module.exports = InMemoryRepository;
+module.exports = UserRepository;
