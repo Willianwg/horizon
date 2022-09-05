@@ -90,4 +90,9 @@ const savePurchaseController = savePurchaseFactory();
 
 routes.post("/buy/:productId", savePurchaseController.handle )
 
+const getPurchaseFactory = require("./useCases/getPurchase/getPurchaseFactory");
+const getPurchaseController = getPurchaseFactory();
+
+routes.get("/purchase", getPurchaseController.handle);
+
 module.exports = routes;
