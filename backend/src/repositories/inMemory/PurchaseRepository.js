@@ -11,9 +11,9 @@ class PurchaseRepository {
         
     }
     
-    async findPurchases(userId){
+    async findPurchases(userEmail){
         
-       const purchases = this.purchases.filter(item=>item.userId === userId);
+       const purchases = this.purchases.filter(item=>item.userEmail === userEmail);
        
        return purchases;
         

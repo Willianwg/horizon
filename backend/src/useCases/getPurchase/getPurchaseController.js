@@ -5,9 +5,9 @@ function getPurchaseController(GetPurchase){
     
     async function handle(req, res){
         
-        const { user_id } = req.headers;
+        const { user_email } = req.headers;
         
-        const purchases = await getPurchase.execute(user_id);
+        const purchases = await getPurchase.execute(user_email);
         
         return res.json(purchases);
         

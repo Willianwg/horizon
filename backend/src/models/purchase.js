@@ -10,13 +10,18 @@ const Purchase = database.define("purchase", {
         primaryKey:true
     },
     
+    userEmail:{
+        type:sequelize.STRING,
+        allowNull:false
+    },
+    
     product:{ type:sequelize.STRING }
     
 })
 
 User.hasMany(Purchase, {
-    constraint:true
+    constraint:true,
+    foreignKey:"userId"
 })
-
 
 module.exports = Purchase;

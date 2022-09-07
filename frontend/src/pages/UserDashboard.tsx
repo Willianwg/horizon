@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import { useApi } from "../services/api";
 import { SearchBar } from "../components/SearchBar";
 import { Header } from "../components/Header";
 import { Product } from "../components/Product";
 import { styled, globalStyles} from "../stitches.config";
-
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
+ 
 type SellerProps ={
     name:string;
 }
@@ -23,11 +25,17 @@ type ProductProps ={
 
 export function User(){
     
+    const auth = useContext(AuthContext);
+    const api = useApi();
     const [products, setProducts] = useState<ProductProps[]>([]);
     
     useEffect(()=>{
         
         async function loadProducts(){
+            
+            const purchases = await api.getPurchases(auth.user.email);
+            
+            alert(JSON.stringify(purchases));
             
          const test = [{
                 id:12,
@@ -48,7 +56,7 @@ export function User(){
         
         loadProducts();
         
-    },[])
+    },[auth])
     
     return (
         <>

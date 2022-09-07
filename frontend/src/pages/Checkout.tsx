@@ -3,8 +3,11 @@ import { styled, globalStyles} from "../stitches.config";
 import { Input, Button } from "../styles/styles";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useApi } from "../services/api";
+import { AuthContext } from "../contexts/AuthContext";
+import { useContext } from "react";
 
 export function Checkout (){
+    const auth = useContext(AuthContext);
     const api = useApi();
     const location = useLocation();
     const navigate = useNavigate();
@@ -88,7 +91,8 @@ export function Checkout (){
         setStage(3);
         
         const transactionData = formatData();
-        const response = await api.pay(transactionData);
+        //const response = await api.pay(transactionData);
+        const savePurchase = await api.savePurchase(auth.user.email, productId);
         
         navigate("/");
     }

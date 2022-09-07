@@ -11,9 +11,9 @@ class PurchaseRepository {
         
     }
     
-    async findPurchases(userId){
+    async findPurchases(userEmail){
         
-        const purchases = await Purchase.findAll({ where:{ userId } });
+        const purchases = await Purchase.findAll({ where:{ userEmail } });
         
         return purchases;
         

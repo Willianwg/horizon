@@ -5,16 +5,17 @@ class SavePurchase {
         this.purchaseRepository = purchaseRepository;
     }
     
-    async execute(userId, productId){
+    async execute(userEmail, productId){
         
       const purchase ={
-          userId,
-          product:productId
+          userEmail,
+          product:productId,
+          userId:1
       }
       
       await this.purchaseRepository.save(purchase);
       
-      const all = await this.purchaseRepository.findPurchases(userId);
+      const all = await this.purchaseRepository.findPurchases(userEmail);
       
       return all;
       

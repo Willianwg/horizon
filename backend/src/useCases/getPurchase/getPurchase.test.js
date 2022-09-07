@@ -12,11 +12,11 @@ describe("Testing search of purchases", ()=>{
        
        const product = { id:"2" };
        
-       const user = { id:6 }
+       const user = { email:"test@test.com" }
        
-       await savePurchase.execute(user.id, product.id);
+       await savePurchase.execute(user.email, product.id);
        
-       const purchases = await getPurchase.execute(user.id);
+       const purchases = await getPurchase.execute(user.email);
        
        
        expect(purchases[0].product).toBe("2");

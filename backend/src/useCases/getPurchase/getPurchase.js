@@ -5,9 +5,9 @@ class GetPurchase {
         this.purchaseRepository = purchaseRepository;
     }
     
-    async execute(userId){
+    async execute(userEmail){
         
-        const purchases = await this.purchaseRepository.findPurchases(userId);
+        const purchases = await this.purchaseRepository.findPurchases(userEmail);
         
         
         return purchases;
