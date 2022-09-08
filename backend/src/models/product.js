@@ -3,6 +3,8 @@ const database = require("../db/index");
 const Seller = require("./seller");
 const Category = require ("./category");
 const ProductCategory = require("./productcategory");
+const Purchase = require("./purchase");
+const User = require("./user");
 
 const Product = database.define("product", {
     id:{
@@ -61,5 +63,13 @@ Category.hasMany(ProductCategory);
 
 ProductCategory.belongsTo(Category);
 
+
+User.hasMany(Purchase, {
+    constraint:true
+})
+
+Purchase.belongsTo(User,{
+    constraint:true
+})
 
 module.exports = Product;

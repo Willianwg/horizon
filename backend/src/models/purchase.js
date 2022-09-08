@@ -1,6 +1,5 @@
 const sequelize = require ("sequelize");
 const database = require ("../db/index");
-const User = require("./user");
    
 const Purchase = database.define("purchase", {
     
@@ -19,9 +18,5 @@ const Purchase = database.define("purchase", {
     
 })
 
-User.hasMany(Purchase, {
-    constraint:true,
-    foreignKey:"userId"
-})
 
 module.exports = Purchase;

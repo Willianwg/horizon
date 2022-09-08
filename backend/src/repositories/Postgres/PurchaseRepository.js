@@ -6,7 +6,7 @@ class PurchaseRepository {
     async save(purchaseData){
         
         const product = await Purchase.create(purchaseData);
-        
+       
         return product;
         
     }
