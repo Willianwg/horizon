@@ -2,7 +2,14 @@ const crypto = require("crypto");
 
 class UserRepository {
     
-    users = [];
+    users = [
+        {
+           id:1818,
+           name:"Osvaldo Henrique",
+           email:"Osvaldo@osvaldo.com",
+           password:"osvaldinho"
+        }
+    ];
     
     async createUser(name, email, password ){
         
@@ -10,7 +17,7 @@ class UserRepository {
         
         Object.assign(user, { 
             
-            id:crypto.randomUUID()
+            id:Math.random()
             
         });
         

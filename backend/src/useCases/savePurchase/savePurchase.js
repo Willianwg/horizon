@@ -1,16 +1,19 @@
 
 class SavePurchase {
     
-    constructor(purchaseRepository){
+    constructor(purchaseRepository, userRepository){
         this.purchaseRepository = purchaseRepository;
+        this.userRepository = userRepository;
     }
     
     async execute(userEmail, productId){
         
+        const user = await this.userRepository.findOneUser({email:userEmail});
+        
       const purchase ={
           userEmail,
           product:productId,
-          userId:1
+          userId: user.id
       }
       
       await this.purchaseRepository.save(purchase);

@@ -1,5 +1,5 @@
 const User = require ("../../models/user");
-const Product = require ("../../models/product");
+const Purchase = require ("../../models/purchase");
 
 
 class UserPGRepository {
@@ -43,11 +43,9 @@ class UserPGRepository {
     }
     
     async getUserProducts(userId){
-        //let user = await User.findByPk(userId, { include:Product });
+        let user = await User.findByPk(userId, { include:Purchase });
         
-        const user = { products:[{ price:1000, name:"nike"}] };
-        
-        return user.products;
+        return user.purchases;
     }
     
 }

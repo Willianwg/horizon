@@ -1,7 +1,14 @@
 
 
 class PurchaseRepository {
-    purchases=[];
+    purchases=[
+        {
+           id:8888,
+           userEmail:"Osvaldo@osvaldo.com",
+           product:"2",
+           userId:1818
+        }
+    ];
     
     async save(data){
         

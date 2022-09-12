@@ -7,7 +7,7 @@ function getUserProducts(repository){
         const { id } = req.params;
         const products = await database.getUserProducts(id);
         
-        return products;
+        return res.json(products);
     }
     
     return { execute }
