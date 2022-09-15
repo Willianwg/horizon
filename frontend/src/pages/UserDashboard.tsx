@@ -35,22 +35,23 @@ export function User(){
             
             const purchases = await api.getPurchases(auth.user.email);
             
-            alert(JSON.stringify(purchases));
+            if(!purchases[0].id) return;
             
-         const test = [{
-                id:12,
-                name:"produto",
-                price:50.99,
-                description:"descricao teste",
-                sellerId:12,
-                seller:{ name:"Willian"},
-                createdAt:"wksodjdk",
-                updatedAt:"sjdkdjdisi",
-                image:"Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
+            const productPurchased = await api.getProduct(purchases[0].product);
+            
+            const { name, price, description, sellerId, seller, id, image } = productPurchased;
+            
+            const formatedObject = [{
+                id,
+                name,
+                price,
+                description,
+                sellerId,
+                seller,
+                image
             }]
             
-            setProducts(test);
-            
+            setProducts(formatedObject);
             
         }
         

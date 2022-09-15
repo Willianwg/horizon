@@ -72,7 +72,7 @@ export const useApi = ()=>({
     },
     
     
-    async generateCart(price){
+    async generateCart(price:number){
         
         const code = Math.random().toString();
         
@@ -107,7 +107,7 @@ export const useApi = ()=>({
          return response.data;
      },
      
-     async savePurchase(userEmail, productId){
+     async savePurchase(userEmail:string, productId:number){
          
          const response = await api.post(`/buy/${productId}`,{}, { headers:{ user_email:userEmail } } );
          
@@ -116,12 +116,20 @@ export const useApi = ()=>({
          
      },
      
-     async getPurchases(userEmail){
+     async getPurchases(userEmail:string){
          
         const response = await api.get(`/purchase`, { headers:{ user_email:userEmail } } );
           
          
-         return response;
+         return response.data;
+     },
+     
+     async getProduct(productId:number){
+         
+         const response = await api.get(`/product/${productId}`);
+         
+         return response.data;
+         
      }
      
 })

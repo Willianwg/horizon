@@ -16,7 +16,6 @@ export function AuthProvider ({ children }:{ children:JSX.Element }){
     
     
     useEffect(()=>{
-      setToken("");
         async function verifyToken(){
             const token = localStorage.getItem("token");
             
