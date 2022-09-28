@@ -37,21 +37,7 @@ export function User(){
             
             if(!purchases[0].id) return;
             
-            const productPurchased = await api.getProduct(purchases[0].product);
-            
-            const { name, price, description, sellerId, seller, id, image } = productPurchased;
-            
-            const formatedObject = [{
-                id,
-                name,
-                price,
-                description,
-                sellerId,
-                seller,
-                image
-            }]
-            
-            setProducts(formatedObject);
+            setProducts(purchases);
             
         }
         

@@ -45,6 +45,14 @@ class ProductPGRepository {
         return product;
     }
     
+    async getProductsList(ids){
+        
+        const productList = await Product.findAll({ where:{ id:ids }, include:{ model:Seller } });
+        
+        return productList;
+        
+    }
+    
     async deleteProduct(id){
         const product = await Product.findByPk(id);
         

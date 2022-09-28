@@ -1,16 +1,21 @@
 
 class GetPurchase {
     
-    constructor(purchaseRepository){
+    constructor(purchaseRepository, productRepository){
         this.purchaseRepository = purchaseRepository;
+        this.productRepository = productRepository;
     }
     
     async execute(userEmail){
         
         const purchases = await this.purchaseRepository.findPurchases(userEmail);
         
+        const ids = purchases.map(item=>item.product);
         
-        return purchases;
+        const products = await this.productRepository.getProductsList(ids)
+        
+        
+        return products;
         
     }
     
