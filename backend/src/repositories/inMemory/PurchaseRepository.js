@@ -5,7 +5,7 @@ class PurchaseRepository {
         {
            id:8888,
            userEmail:"Osvaldo@osvaldo.com",
-           product:"2",
+           product:12345,
            userId:1818
         }
     ];
