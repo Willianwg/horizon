@@ -9,41 +9,72 @@ export function Header(){
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     
-    function logIn(e){
+    function logIn(e:Event){
         e.preventDefault();
         
         navigate("/login");
     }
     
-    function logOut(e){
+    function logOut(e:Event){
         e.preventDefault();
         
         auth.logOut();
     }
+
+    function joinLinks():JSX.Element{
+        return(
+            <div>
+                <Click href="/signIn">Signin</Click>
+                <Click href="/logIn">Login</Click>
+            </div>
+        )
+    }
     
     return(
-           <Container>
-            <Link to="/" style ={{ textDecoration:"none", cursor:"none" }}><Logo><SiCashapp size={14}/> Horizon.br</Logo></Link>
-            { 1===2 && <Options>
-              { !auth.user?
-              <button onClick={logIn}>Login</button>
-              :
-              <button onClick={logOut}>Sair</button>
-              }
-            </Options> }
-            <Links>
-            <Click href={ auth.user?`http://localhost:5173/user/1`:"http://localhost:5173/signIn" }>{ auth.user && <Span>{ auth.user.name }</Span>}<FaUserCircle size={23} color="rgba(250,250,250,0.9)"/></Click>
-            <Click href="https://amazon.com/"><FaShoppingCart size={23} color="rgba(250,250,250,0.9)"/></Click>
-            </Links>
-           </Container>
+
+        <Container>
+            <Nav>
+                <LogoDiv>
+                    <SiCashapp size={ 24 } color='white'/>
+                    <a style={{ textDecoration:'none' }} href="/#"> <Logo>Horizon.br</Logo> </a>
+                </LogoDiv>
+                <Links>
+                    <div style={{ alignItems:'center'}}>
+                        <Click href={`/user/${1}`}>{ auth.user && <Span>{ auth.user.name }</Span>}</Click>
+                    </div>
+                  
+                        { !auth.user && joinLinks() }
+                 
+                    <div>
+                        <Click href="/cart">Cart</Click>
+                    </div>
+                </Links>
+            </Nav>
+        </Container>
+       
     )
 }
 
 const Container = styled("div",{
-  display:"grid",
   width:"100%",
   background:"rgb(0,0,90)",
-  marginBottom:25,
+  zIndex:50,
+  top:0
+})
+
+const Nav = styled('nav', {
+    display:'flex',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'space-between'
+})
+
+const LogoDiv = styled("div",{
+    marginTop:5,
+    display:'flex',
+    alignItems:'center',
+    marginLeft:10
+    
 })
 
 const Logo = styled("h1",{
@@ -51,40 +82,36 @@ const Logo = styled("h1",{
     color:"white",
     height:20,
     fontSize:20,
-    marginLeft:10,
+    marginLeft:5,
+    
 })
 
 const Links = styled("div",{
-    position:"absolute",
-    top:13,
-    right:23,
-    color:"black",
-    alignItems:"center"
+    display:'flex',
+    color:"white",
+    alignItems:"center",
+    alignContent:'space-between'
 })
 
 const Click = styled("a",{
-    color:"black",
-    marginLeft:30,
+    fontWeight:'bold',
+    fontFamily:"helvetica",
+    color:"white",
     textDecoration:"none",
+    margin:'0px 10px',
+    padding: '10px 0px',
+    fontSize:16,
+    '&:hover':{
+        color:'rgb(250,180,70)'
+    }
 })
-
-const Options = styled("div", {
-    height:20,
-    alignItems:"center",
-    display:"flex",
-    justifyContent:"space-between",
-    paddingRight:15,
-    paddingLeft:10,
-    
-});
 
 const Span = styled("span",{
     color:"white",
-    position:"relative",
-    right:8,
-    bottom:6,
     fontWeight:600,
-    fontSize:14,
-    fontFamily:"Arial"
-    
+    fontSize:16,
+    fontFamily:"helvetica",
+    '&:hover':{
+        color:'rgb(250,180,70)'
+    }
 })
