@@ -7,6 +7,7 @@ type NameProps={
     price: number;
     sellerName: string;
     id:number;
+    url:string;
 }
 
 
@@ -46,7 +47,7 @@ const Image = styled("img", {
     
 });
 
-const Price = styled("p1",{
+const Price = styled("p",{
     fontSize:20,
     lineHeight:0,
 });

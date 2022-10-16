@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { styled } from "../stitches.config";
-import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
 import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +8,7 @@ export function SearchBar(){
     
     const [productName, setProductName] = useState("");
     
-    function handleSubmit(e){
+    function handleSubmit(e:React.MouseEvent<HTMLButtonElement, MouseEvent>){
         
         e.preventDefault();
         
@@ -20,7 +19,7 @@ export function SearchBar(){
         const unaccentedText = textWithoutEmptySpace.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
         
         navigate(`/search?pname=${unaccentedText}`);
-        
+        return 
     }
     
     return(
