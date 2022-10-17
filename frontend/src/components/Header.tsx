@@ -9,12 +9,6 @@ export function Header(){
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     
-    function logIn(e:Event){
-        e.preventDefault();
-        
-        navigate("/login");
-    }
-    
     function logOut(e:Event){
         e.preventDefault();
         
