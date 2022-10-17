@@ -1,13 +1,11 @@
 import { styled } from "../stitches.config";
-import { FaUserCircle, FaShoppingCart } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { SiCashapp } from "react-icons/si";
+import { HeaderBar } from "./HeaderBar";
 
 export function Header(){
     const auth = useContext(AuthContext);
-    const navigate = useNavigate();
     
     function logOut(e:Event){
         e.preventDefault();
@@ -31,14 +29,15 @@ export function Header(){
                 <LogoDiv>
                     <SiCashapp size={ 24 } color='white'/>
                     <a style={{ textDecoration:'none' }} href="/#"> <Logo>Horizon.br</Logo> </a>
-                </LogoDiv>
+                </LogoDiv> 
+                <HeaderBar/>
                 <Links>
                     <div style={{ alignItems:'center'}}>
                         <Click href={`/user/${1}`}>{ auth.user && <Span>{ auth.user.name }</Span>}</Click>
                     </div>
                   
                         { !auth.user && joinLinks() }
-                 
+                        
                     <div>
                         <Click href="/cart">Cart</Click>
                     </div>
