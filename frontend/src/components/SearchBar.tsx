@@ -23,13 +23,20 @@ export function SearchBar(){
     }
     
     return(
-        <>
+        <Div>
           <Bar placeholder="Pesquisa Horizon.com" onChange={ e => setProductName(e.target.value) }/>
           <Button onClick={ handleSubmit }><BiSearchAlt size={23}/></Button>
-        </>
+        </Div>
     )
 }
 
+const Div = styled('div', {
+    display:'none',
+
+    "@sm":{
+        display:'block'
+    }
+})
 const Bar = styled("input",{
     borderRadius:5,
     height:40,
@@ -42,6 +49,7 @@ const Bar = styled("input",{
     borderWidth:1,
     borderColor:"rgba(240,240,240,0.4)",
     marginBottom:10,
+   
 })
 
 const Button = styled("button",{
@@ -55,4 +63,5 @@ const Button = styled("button",{
     position:"relative",
     top:5,
     maxWidth:50,
+
 })

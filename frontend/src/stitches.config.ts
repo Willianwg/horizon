@@ -17,7 +17,9 @@ export const globalStyles = globalCss({
 export const { styled, css } = createStitches({
     
     media:{
-      sm:"(max-width: 600px)"
+      sm:"(max-width: 600px)",
+      md:"(max-width: 780px)",
+      lg:"(max-width: 1080px)"
     }
     
 });
