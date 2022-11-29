@@ -32,6 +32,7 @@ export function HeaderBar(){
 
 const Div = styled('div',{
     display:'flex',
+    alignItems: 'center',
     width:'100%',
     margin:'0px 20px',
 
@@ -49,6 +50,8 @@ const Bar = styled("input",{
     paddingLeft:5,
     borderWidth:1,
     borderColor:"rgba(240,240,240,0.4)",
+    outline:'none',
+    fontFamily:"Segoe UI",
 })
 
 const Button = styled("button",{
@@ -56,8 +59,8 @@ const Button = styled("button",{
     height:40,
     width:"15%",
     padding:2,
-    backgroundColor:"rgb(250,180,70)",
-    borderColor:"rgba(240,240,240,0.4)",
-    borderWidth:2,
-    maxWidth:60
+    background:"#E6AE2C",
+    borderWidth:0,
+    maxWidth:60,
+    cursor:'pointer',
 })

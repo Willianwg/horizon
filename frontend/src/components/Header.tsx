@@ -24,8 +24,7 @@ export function Header(){
     
     return(
 
-        <Container>
-            <Nav>
+            <Navbar>
                 <LogoDiv>
                     <SiCashapp size={ 24 } color='white'/>
                     <a style={{ textDecoration:'none' }} href="/#"> <Logo>Horizon.br</Logo> </a>
@@ -42,68 +41,43 @@ export function Header(){
                         <Click href="/cart">Cart</Click>
                     </div>
                 </Links>
-            </Nav>
-        </Container>
+            </Navbar>
        
     )
 }
 
-const Container = styled("div",{
-  width:"100%",
-  background:"rgb(0,0,90)",
-  zIndex:50,
-  top:0
-})
-
-const Nav = styled('nav', {
+const Navbar = styled('nav', {
+    background:'linear-gradient(to left, #090C60, #242BAD)',
+    color:'#00ff88',
+    padding:10,
     display:'flex',
-    flexDirection:'row',
     alignItems:'center',
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    fontFamily:"Segoe UI",
 })
 
 const LogoDiv = styled("div",{
-    marginTop:5,
-    display:'flex',
-    alignItems:'center',
-    marginLeft:10
-    
+  display:'flex',
+  alignItems:'center',
 })
 
 const Logo = styled("h1",{
-    fontWeight:700,
-    color:"white",
-    height:20,
-    fontSize:20,
-    marginLeft:5,
-    
+   color:'white',
+   marginLeft:5,
 })
 
 const Links = styled("div",{
     display:'flex',
-    color:"white",
-    alignItems:"center",
-    alignContent:'space-between'
+    alignItems:'center',
 })
 
 const Click = styled("a",{
     fontWeight:'bold',
-    fontFamily:"helvetica",
     color:"white",
     textDecoration:"none",
     margin:'0px 10px',
     padding: '10px 0px',
     fontSize:16,
-    '&:hover':{
-        color:'rgb(250,180,70)'
-    }
-})
-
-const Span = styled("span",{
-    color:"white",
-    fontWeight:600,
-    fontSize:16,
-    fontFamily:"helvetica",
     '&:hover':{
         color:'rgb(250,180,70)'
     }
