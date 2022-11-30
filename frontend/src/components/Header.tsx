@@ -3,6 +3,7 @@ import { AuthContext } from "../contexts/AuthContext";
 import { useContext } from "react";
 import { SiCashapp } from "react-icons/si";
 import { HeaderBar } from "./HeaderBar";
+import { BiMenu } from "react-icons/bi";
 
 export function Header(){
     const auth = useContext(AuthContext);
@@ -36,11 +37,15 @@ export function Header(){
                     </div>
                   
                         { !auth.user && joinLinks() }
-                        
+                       
                     <div>
                         <Click href="/cart">Cart</Click>
                     </div>
                 </Links>
+                <Menu>
+                    <BiMenu color="white" size={ 30 }/>
+                </Menu>
+                
             </Navbar>
        
     )
@@ -85,3 +90,19 @@ const Click = styled("a",{
         color:'rgb(250,180,70)'
     }
 })
+
+const Menu = styled('div', {
+    display:'none',
+    alignItems:'center',
+    justifyContent:'center',
+    cursor:'pointer',
+    '@sm':{
+        display:'flex',
+    }
+})
+
+
+const Span = styled('span', {
+   
+})
+
