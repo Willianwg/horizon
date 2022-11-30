@@ -9,8 +9,8 @@ export const globalStyles = globalCss({
         background:"rgb(245,245,245)",
         margin:0,
         padding:0,
-        borderSizing:"borderBox"
-        
+        borderSizing:"borderBox",
+        fontFamily:"Segoe UI"
     }
 });
 

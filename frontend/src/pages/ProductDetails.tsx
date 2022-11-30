@@ -38,7 +38,7 @@ export function Details (){
         <Page>
         <Header/>
         <Container>
-         <ProductName>{product.name}</ProductName>
+         <ProductName>Test</ProductName>
                         <Stars>
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
@@ -49,7 +49,7 @@ export function Details (){
          <Price><C>R$</C>{product.price}</Price>
          <Description>
            <p>Descrição:</p>
-           <p>{ product.description }</p>
+           <p>Accusantium quo aspernatur expedita rerum assumenda quaerat quisquam officiis, excepturi, inventore recusandae reprehenderit, corporis repellendus adipisci! Natus a aliquam alias ea. Placeat. </p>
          </Description>
          <Button color="dark" onClick={e=>navigate(`${location.pathname}/checkout`)}>Comprar</Button>
          <Button>Adicionar ao carrinho</Button>
@@ -60,62 +60,43 @@ export function Details (){
 
 
 const Stars = styled("div",{
-    display:"flex",
-    margin:5,
+   
 });
 
 const Page = styled("div",{
-    height:"100%",
-    position:"absolute",
-    width:"100%",
+   
 });
 
 const Container = styled("div",{
-    width:"90%",
-    background:"white",
-    margin:"auto",
-    padding:5,
-    marginTop:50,
-    
-    "@sm":{
-        marginTop:10,
-    }
- 
+    boxSizing:"border-box",
+    margin:20,
+    padding:10,
+    display:"flex",
+    flexDirection:"column",
+    alignItems:"flex-start",
+    justifyContent:"flex-start",
+    background:'red',
+    height:'100vh',
 });
 
 const Image = styled("img",{
-    height:700,
-    width:"100%",
-    backgroundSize:"cover",
-    backgroundPosition:"center",
-    border:"1px ridge rgba(240,240,240,0.2)",
-    
-    "@sm":{
-      height:300,
-    }
+   width:'100%',
+   height:'100%',
 });
 
 const ProductName = styled("h4", {
-    textWeight:600,
-    marginLeft:5,
-    height:5,
+   
 })
 
 
 const Price = styled("h3", {
-    fontWeight:600,
-    fontSize:40,
-    lineHeight:0,
-    fontFamily:"Serif",
+   
 })
 
 const Description = styled("p", {
-    fontWeight:300,
+   
 })
 
 const C = styled("span", {
-    fontWeight:400,
-    fontSize:30,
-    marginRight:1,
-    fontFamily:"Arial",
+   
 })
