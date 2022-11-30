@@ -69,6 +69,9 @@ const Logo = styled("h1",{
 const Links = styled("div",{
     display:'flex',
     alignItems:'center',
+    '@sm':{
+        display:'none'
+    }
 })
 
 const Click = styled("a",{

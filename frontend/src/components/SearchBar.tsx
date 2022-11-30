@@ -34,7 +34,7 @@ const Div = styled('div', {
     display:'none',
 
     "@sm":{
-        display:'block'
+        display:'flex'
     }
 })
 const Bar = styled("input",{
