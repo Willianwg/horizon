@@ -1,6 +1,7 @@
 import { styled } from "../stitches.config";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from '../ApiUrl';
 
 type NameProps={
     productName: string;
@@ -19,7 +20,7 @@ export function Product(props:NameProps) {
     return (
        
          <DataContainer onClick={ seeDetails } >
-            <Image style={{ backgroundImage:`url(http://localhost:3000/files/${props.url})`}}/>
+            <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ props.url})` }}/>
             <div>
                 <ProductName>{ props.productName }</ProductName>
                 <Seller>por: { props.sellerName }</Seller>
