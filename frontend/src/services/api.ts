@@ -66,7 +66,7 @@ export const useApi = ()=>({
         alert("deslogado com sucesso");
     },
     
-    async getProductDetails(id:number){
+    async getProductDetails(id:string){
         const response = await api.get(`/product/${id}`);
         
         return response.data;
@@ -90,7 +90,7 @@ export const useApi = ()=>({
         
     },
     
-    async pay(transactionData){
+    async pay(transactionData:any){
         try{
         const response = await api.post("/transaction", transactionData )
         
