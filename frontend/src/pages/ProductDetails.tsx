@@ -5,13 +5,25 @@ import { useApi } from "../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { Button } from "../styles/styles";
+import { apiUrl } from '../ApiUrl';
+
+type Product = {
+    name:string;
+    description:string;
+    image:string;
+}
+
 export function Details() {
     const api = useApi();
     const navigate = useNavigate();
     const location = useLocation();
     const id = getIdFromUrl();
 
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState<Product>({
+        name:'Test',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aut nulla, reprehenderit aspernatur deleniti earum. Quidem veritatis, nemo vero dolorem hic cupiditate dolor ad debitis placeat libero, facilis nihil at!',
+        image:'testimage.jpg'
+    });
 
     useEffect(() => {
 
@@ -38,9 +50,9 @@ export function Details() {
         <Page>
             <Header />
             <Container>
-                <Image style={{ backgroundImage: `url(http://localhost:3000/files/${product.image})` }} />
+                <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ product.image })` }} />
                 <Right>
-                    <ProductName>Test</ProductName>
+                    <ProductName>{ product.name }</ProductName>
                     <Stars>
                         <AiFillStar color="orange" />
                         <AiFillStar color="orange" />
@@ -50,10 +62,12 @@ export function Details() {
                     <Price><C>R$</C>{55.99}</Price>
                     <Description>
                         <p>Descrição:</p>
-                        <p>Accusantium quo aspernatur expedita rerum assumenda quaerat quisquam officiis, excepturi, inventore recusandae reprehenderit, corporis repellendus adipisci! Natus a aliquam alias ea. Placeat. </p>
+                        <p>{ product.description }</p>
                     </Description>
+                    <Buttons>
                     <Button color="dark" onClick={e => navigate(`${location.pathname}/checkout`)}>Comprar</Button>
                     <Button>Adicionar ao carrinho</Button>
+                    </Buttons>
                 </Right>
             </Container>
         </Page>
@@ -86,6 +100,8 @@ const Container = styled("div", {
 
 const Image = styled("img", {
     width: '100%',
+    backgroundSize:"cover",
+    backgroundRepeat:"repeat",
     height: 500,
     '@sm':{
         height:300,
@@ -113,11 +129,18 @@ const C = styled("span", {
 
 })
 
+const Buttons = styled("div", {
+    width:"100%"
+})
+
 const Right = styled("div", {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "space-between",
+    "@sm":{
+        width:"100%",
+    }
 })
 
 

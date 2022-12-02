@@ -22,9 +22,7 @@ export const Button = styled("button",{
    alignSelf:'flex-end',
    background:"rgb(100,190,250)",
    cursor:'pointer',
-   '@sm':{
-        marginBottom:5
-   },
+   marginBottom:5,
     variants:{
         size:{
            small:{

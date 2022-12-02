@@ -43,7 +43,6 @@ const Image = styled("img", {
     width:120,
     backgroundSize:"cover",
     backgroundRepeat:"repeat",
-    backgroundPosition:"center",
     marginRight:10,
     
 });
