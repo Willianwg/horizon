@@ -17,7 +17,7 @@ export function Header(){
     function joinLinks():JSX.Element{
         return(
             <div>
-                <Click href="/signIn">Signin</Click>
+                <Click href="/signup">SignUp</Click>
                 <Click href="/logIn">Login</Click>
             </div>
         )

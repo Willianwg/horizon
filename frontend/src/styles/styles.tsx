@@ -9,6 +9,9 @@ export const Input = styled("input",{
     marginBottom:15,
     border:"1px black solid",
     padding:5,
+    outline:"none",
+    borderRadius:3,
+    borderColor:"grey",
 });
 
 export const Button = styled("button",{
@@ -31,7 +34,7 @@ export const Button = styled("button",{
         },
         color:{
             dark:{
-                background:"rgb(100,150,250)",
+                background: "rgb(50,100,250)",
             }
         }
     }
