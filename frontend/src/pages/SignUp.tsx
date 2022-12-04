@@ -1,12 +1,11 @@
 import { styled, globalStyles } from "../stitches.config";
-import { useState, Alert } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useApi } from "../services/api";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { Input, Button } from "../styles/styles";
 
-export function SignIn(){
+export function SignUp(){
     const auth = useContext(AuthContext);
     
     const navigate = useNavigate();
@@ -18,7 +17,7 @@ export function SignIn(){
     
     
     
-    async function handleSubmit(event){
+    async function handleSubmit(event:React.FormEvent<HTMLFormElement>){
         event.preventDefault();
         
         if(!name || !email || !password) return alert("Preencha todos os campos");
