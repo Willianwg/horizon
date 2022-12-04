@@ -39,3 +39,22 @@ export const Button = styled("button",{
         }
     }
 });
+
+export const Page = styled("div", {
+    display: "flex",
+    width: "100vw",
+    height: "100vh",
+    background: "#dddd",
+    justifyContent: "center",
+    alignItems: "center",
+    fontFamily:"Segoe UI"
+});
+
+export const Form = styled("form", {
+    padding:20,
+    background:"white",
+    borderRadius:5,
+    boxShadow: '0px 10px 40px -14px black',
+    widht:"90%"
+});
+

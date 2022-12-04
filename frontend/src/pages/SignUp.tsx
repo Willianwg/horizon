@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Input, Button } from "../styles/styles";
+import { Page, Input, Button, Form } from "../styles/styles";
 
 export function SignUp() {
     const auth = useContext(AuthContext);
@@ -36,48 +36,29 @@ export function SignUp() {
     return (
 
         <Page>
-                <Form onSubmit={handleSubmit}>
-                    <TextInput>
-                        <label>Name</label>
-                        <Input onChange={e => setName(e.target.value)} />
-                    </TextInput>
-                    <TextInput>
-                        <label>Email</label>
-                        <Input onChange={e => setEmail(e.target.value)} type="email" />
-                    </TextInput>
-                    <TextInput>
-                        <label>Password</label>
-                        <Input type="password" onChange={e => setPassword(e.target.value)} />
-                    </TextInput>
+            <Form onSubmit={handleSubmit}>
+                <h1>Sign up</h1>
+                <TextInput>
+                    <label>Name</label>
+                    <Input onChange={e => setName(e.target.value)} />
+                </TextInput>
+                <TextInput>
+                    <label>Email</label>
+                    <Input onChange={e => setEmail(e.target.value)} type="email" />
+                </TextInput>
+                <TextInput>
+                    <label>Password</label>
+                    <Input type="password" onChange={e => setPassword(e.target.value)} />
+                </TextInput>
 
-                    <Button color="dark" type="submit" css={{ display: "block", marginLeft: "auto", marginTop:10 }}>Submit</Button>
-                </Form>
+                <Button color="dark" type="submit" css={{ display: "block", marginLeft: "auto", marginTop: 10 }}>Submit</Button>
+            </Form>
         </Page>
 
     )
 }
 
-
-const Page = styled("div", {
-    display: "flex",
-    width: "100vw",
-    height: "100vh",
-    background: "#dddd",
-    justifyContent: "center",
-    alignItems: "center",
-    fontFamily:"Segoe UI"
-});
-
-const Form = styled("form", {
-    padding:20,
-    background:"white",
-    borderRadius:5,
-    boxShadow: '0px 10px 40px -14px black',
-    widht:"90%"
-});
-
 const TextInput = styled("div", {
-    fontWeight:700,
 });
 
 
