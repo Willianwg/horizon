@@ -47,8 +47,6 @@ export const useApi = ()=>({
             return { error:"something went wrong" };
         }
         
-        
-        
     },
     
     async login(email:string, password:string){
