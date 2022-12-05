@@ -61,11 +61,10 @@ export function LandingPage(){
 const Container = styled("div",{
     padding:30,
     display:"grid",
-    gridColumnGap:"50px",
-    gridTemplateColumns:"25fr 25fr 25fr",
+    gridColumnGap:"10px",
+    gridTemplateColumns:"1fr 1fr 1fr",
     gridRowGap:"20px",
-    alignItems:"flex-start",
-    justifyContent:"center",
+    justifyItems:"center",
 
     "@sm":{
         display:"flex",

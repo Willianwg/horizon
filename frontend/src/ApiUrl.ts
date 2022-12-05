@@ -1,1 +1,1 @@
-export const apiUrl = 'https://3000-willianwg-horizon-zjd6rxfew3k.ws-us77.gitpod.io';
+export const apiUrl = 'https://3000-willianwg-horizon-85yux1y8fg6.ws-us77.gitpod.io';

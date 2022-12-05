@@ -52,7 +52,9 @@ const DataContainer = styled("div",{
     userSelect:"none",
     boxShadow:"0px 10px 45px -20px black",
     fontFamily:"Segoe UI",
-    
+    minWidth:250,
+    maxWidth:300,
+
     "@sm":{
         width:"100%",
     },
