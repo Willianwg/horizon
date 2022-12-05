@@ -70,8 +70,10 @@ export function Cart(){
 
 const Container = styled("div",{
     height:500,
-    backgroundColor:"white",
     borderRadius:5,
+    display:"flex",
+    flexDirection:"column",
+    paddingLeft:20,
 })
 
 const Label= styled("h3",{
