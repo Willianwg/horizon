@@ -12,10 +12,11 @@ type SellerProps ={
 }
 
 type ProductProps ={
-    id:string;
+    id:number;
     name:string;
     price:number;
     description:string;
+    image:string;
     sellerId:number;
     seller:SellerProps;
     createdAt:string;
@@ -36,8 +37,6 @@ export function LandingPage(){
         loadProducts();
         
     },[]);
-    
-    
     
     globalStyles();
     
@@ -60,7 +59,17 @@ export function LandingPage(){
 }
 
 const Container = styled("div",{
-    
-    borderRadius:5,
-    
+    padding:30,
+    display:"grid",
+    gridColumnGap:"50px",
+    gridTemplateColumns:"25fr 25fr 25fr",
+    gridRowGap:"20px",
+    alignItems:"flex-start",
+    justifyContent:"center",
+
+    "@sm":{
+        display:"flex",
+        flexDirection:"column",
+        padding:20,
+    }
 })

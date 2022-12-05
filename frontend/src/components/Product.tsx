@@ -2,6 +2,7 @@ import { styled } from "../stitches.config";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from '../ApiUrl';
+import { useEffect } from "react";
 
 type NameProps={
     productName: string;
@@ -11,17 +12,20 @@ type NameProps={
     url:string;
 }
 
-
 export function Product(props:NameProps) {
     const navigate = useNavigate();
     
     const seeDetails = ()=> navigate(`/details/${props.id}`);
     
+    useEffect(()=>{
+        console.log(`url(${ apiUrl +'/files/'+ props.url})`)
+    }, [])
+
     return (
        
          <DataContainer onClick={ seeDetails } >
             <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ props.url})` }}/>
-            <div>
+            <Info>
                 <ProductName>{ props.productName }</ProductName>
                 <Seller>por: { props.sellerName }</Seller>
                <Stars>
@@ -31,20 +35,43 @@ export function Product(props:NameProps) {
                 <AiFillStar color="orange"/>
                </Stars>
                 <Price>R${ props.price }</Price>
-            </div>
+            </Info>
          </DataContainer>
        
     )
 }
 
+const DataContainer = styled("div",{
+    width:"100%",
+    background:"white",
+    display:"flex",
+    flexDirection:"column",
+    cursor:"auto",
+    marginBottom:5,
+    overflow:"hidden",
+    userSelect:"none",
+    boxShadow:"0px 10px 45px -20px black",
+    fontFamily:"Segoe UI",
+    
+    "@sm":{
+        width:"100%",
+    },
+    "&:active":{
+        backgroundColor:"rgba(100,190,250, 0.3)",   
+    },
+});
 
 const Image = styled("img", {
-    height:"100%",
-    width:120,
+    height:200,
+    width:'100%',
     backgroundSize:"cover",
     backgroundRepeat:"repeat",
     marginRight:10,
-    
+});
+
+
+const Info = styled("div",{
+   paddingLeft:10
 });
 
 const Price = styled("p",{
@@ -68,24 +95,4 @@ const Seller = styled("p",{
     fontWeight:400,
     lineHeight:0,
     position:"relative",
-})
-
-const DataContainer = styled("div",{
-    background:"white",
-    display:"flex",
-    width:"100%",
-    borderColor:"rgba(240,240,240,0.2)",
-    borderStyle:"ridge",
-    borderWidth:1,
-    cursor:"auto",
-    height:120,
-    marginBottom:5,
-    overflow:"hidden",
-    userSelect:"none",
-    
-    "&:active":{
-        backgroundColor:"rgba(100,190,250, 0.3)",
-        
-    },
-    
-})
+});

@@ -10,7 +10,13 @@ module.exports = {
             // nome sem a extensão
             const name = path.basename(file.originalname, extensao);
 
-            callback(null, `${name}~${Date.now()}${extensao}`)
+            let finalName = name;
+            let spaced = name.split(' ');
+            if(spaced.length > 1){
+                finalName = spaced.join('-');
+            }
+
+            callback(null, `${finalName}~${Date.now()}${extensao}`)
 
         }
     })
