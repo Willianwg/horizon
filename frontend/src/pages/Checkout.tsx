@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { styled, globalStyles} from "../stitches.config";
 import { Input, Button } from "../styles/styles";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -45,8 +45,6 @@ export function Checkout (){
         const id = location.pathname.split("/")[2];
         setId(id)
         
-        
-        
         async function loadProduct(){
             const data = await api.getProductDetails(id);
             
@@ -78,7 +76,7 @@ export function Checkout (){
        
     }
     
-    async function handleSubmit(e){
+    async function handleSubmit(e:React.FormEvent<HTMLFormElement>){
         
         e.preventDefault();
         
@@ -92,6 +90,8 @@ export function Checkout (){
         
         const transactionData = formatData();
         //const response = await api.pay(transactionData);
+
+        if(!auth.user) return;
         const savePurchase = await api.savePurchase(auth.user.email, productId);
         
         navigate("/");
@@ -124,25 +124,18 @@ export function Checkout (){
     }
     
     function installmentValue(){
-        
         const value = price/installments;
-        
-        
         return value.toFixed(2);
     }
     
     function installmentOptions(){
-        
         let a=[];
         
         for (let i = 1; i <= 10; i++) {
             a.push(i);
         }
         
-        
-        
        return a;
-       
     }
     
     return (
@@ -180,9 +173,9 @@ export function Checkout (){
           <Input  placeholder="Credit Expiration (MM/YY)" onChange={ e=> setExpiration(e.target.value) }/>
           <Input type="number" placeholder="Credit Card Cvv" onChange={ e=> setCardCvv(e.target.value) }/>
           
-          <select name="select" onChange={e=>setInstallments(e.target.value)}>
+          <select name="select" onChange={ e=>setInstallments(parseInt(e.target.value))}>
           
-           { installmentOptions().map( item =>  <option value={item}>{item}x</option> ) }
+           { installmentOptions().map( (item, index) =>  <option key={index} value={item}>{item}x</option> ) }
            
           </select>
            

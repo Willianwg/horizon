@@ -106,7 +106,7 @@ export const useApi = ()=>({
          return response.data;
      },
      
-     async savePurchase(userEmail:string, productId:number){
+     async savePurchase(userEmail:string, productId:string){
          
          const response = await api.post(`/buy/${productId}`,{}, { headers:{ user_email:userEmail } } );
          
