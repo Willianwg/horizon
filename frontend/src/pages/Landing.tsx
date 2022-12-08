@@ -7,6 +7,7 @@ import { SearchBar } from "../components/SearchBar";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import banner from "../../public/banner01.jpg";
+import { Footer } from "../components/Footer";
 
 type SellerProps = {
     name: string;
@@ -45,7 +46,7 @@ export function LandingPage() {
         <>
             <Header />
             <SearchBar />
-            <Image src={banner} />
+            <Image />
             <Container>
                 {
                     products.map(product => {
@@ -54,6 +55,7 @@ export function LandingPage() {
                 }
 
             </Container>
+            <Footer />
         </>
     )
 
@@ -77,13 +79,13 @@ const Container = styled("div", {
 
 const Image = styled("div", {
     backgroundImage: "linear-gradient(to top, rgba(221,221,221,1), rgba(221,221,221,0), rgba(0,0,0,0)), url(../../public/banner01.jpg)",
-  height: 400,
-  backgroundSize:"cover",
+    height: 400,
+    backgroundSize: "cover",
     width: "100%",
     position: "absolute",
     zIndex: -1,
 
     "@sm": {
-    display: "none"
-}
+        display: "none"
+    }
 })
