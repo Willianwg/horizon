@@ -26,7 +26,8 @@ type ProductProps = {
 }
 
 export function LandingPage() {
-    const [products, setProducts] = useState<ProductProps[]>([{
+    const [products, setProducts] = useState<ProductProps[]>([]);
+    const example = [{
         id:12,
         name:"produto",
         price:50.99,
@@ -36,7 +37,7 @@ export function LandingPage() {
         createdAt:"wksodjdk",
         updatedAt:"sjdkdjdisi",
         image:"Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
-    }]);
+    },];
 
     useEffect(() => {
 
@@ -58,6 +59,13 @@ export function LandingPage() {
             <SearchBar />
             <Image />
             <Container>
+
+                {
+                   products.length === 0 &&  (example.map(product => {
+                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
+                    }))
+                }
+
                 {
                     products.map(product => {
                         return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />

@@ -6,11 +6,13 @@ import { globalCss } from "@stitches/react";
 
 export const globalStyles = globalCss({
     body:{
-        background:"#dddd",
         margin:0,
         padding:0,
-        borderSizing:"borderBox",
+        background:"#dddd",
         fontFamily:"Segoe UI"
+    },
+    "*":{
+        boxSizing:"border-box",
     }
 });
 

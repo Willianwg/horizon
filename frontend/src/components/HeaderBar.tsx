@@ -43,7 +43,7 @@ const Div = styled('div',{
 
 const Bar = styled("input",{
     borderRadius:5,
-    height:30,
+    height:40,
     padding:2,
     width:"70%",
     margin:2,
