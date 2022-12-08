@@ -52,7 +52,7 @@ export function Header(){
 }
 
 const Navbar = styled('nav', {
-    background:'linear-gradient(to left, #090C60, #242BAD)',
+    background:'black',
     color:'#00ff88',
     padding:10,
     display:'flex',
