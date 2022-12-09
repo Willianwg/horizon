@@ -14,10 +14,11 @@ export function Footer(){
 const Container = styled("div",{
     background:"black",
     height:100,
+    width:"100%",
     marginTop:50,
     padding:20,
     display:"flex",
-    justifyContent:"center"
+    justifyContent:"center",
 })
 
 

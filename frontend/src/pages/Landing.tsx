@@ -4,10 +4,8 @@ import { styled, globalStyles } from "../stitches.config";
 import api from "../services/api";
 import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
-import { useContext } from "react";
-import { AuthContext } from "../contexts/AuthContext";
-import banner from "../../public/banner01.jpg";
 import { Footer } from "../components/Footer";
+import { Slider } from "../components/Slider";
 
 type SellerProps = {
     name: string;
@@ -28,15 +26,15 @@ type ProductProps = {
 export function LandingPage() {
     const [products, setProducts] = useState<ProductProps[]>([]);
     const example = [{
-        id:12,
-        name:"produto",
-        price:50.99,
-        description:"descricao teste",
-        sellerId:12,
-        seller:{ name:"Willian"},
-        createdAt:"wksodjdk",
-        updatedAt:"sjdkdjdisi",
-        image:"Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
+        id: 12,
+        name: "produto",
+        price: 50.99,
+        description: "descricao teste",
+        sellerId: 12,
+        seller: { name: "Willian" },
+        createdAt: "wksodjdk",
+        updatedAt: "sjdkdjdisi",
+        image: "Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
     },];
 
     useEffect(() => {
@@ -54,14 +52,14 @@ export function LandingPage() {
     globalStyles();
 
     return (
-        <>
+        <Page>
             <Header />
             <SearchBar />
-            <Image />
+            <Slider/>
             <Container>
 
                 {
-                   products.length === 0 &&  (example.map(product => {
+                    products.length === 0 && (example.map(product => {
                         return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
                     }))
                 }
@@ -74,36 +72,29 @@ export function LandingPage() {
 
             </Container>
             <Footer />
-        </>
+        </Page>
     )
 
 }
 
+
+const Page = styled("div", {
+    overflow:"hidden",
+})
+
 const Container = styled("div", {
     padding: 30,
-    paddingTop: 250,
     display: "grid",
     gridColumnGap: "10px",
     gridTemplateColumns: "1fr 1fr 1fr 1fr",
     gridRowGap: "20px",
     justifyItems: "center",
+    position:"relative",
+    bottom:170,
 
     "@sm": {
         display: "flex",
         flexDirection: "column",
         padding: 20,
-    }
-})
-
-const Image = styled("div", {
-    backgroundImage: "linear-gradient(to top, rgba(221,221,221,1), rgba(221,221,221,0), rgba(0,0,0,0)), url(../../public/banner01.jpg)",
-    height: 400,
-    backgroundSize: "cover",
-    width: "100%",
-    position: "absolute",
-    zIndex: -1,
-
-    "@sm": {
-        display: "none"
     }
 })
