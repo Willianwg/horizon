@@ -5,16 +5,17 @@ export function Slider() {
     const [currentIndex, setIndex] = useState(0);
     const images = [
         '../../public/banner01.jpg',
-        '../../public/banner02.jpg'
+        '../../public/banner02.jpg',
+        '../../public/banner03.jpg'
     ];
 
     useEffect(() => {
 
-        function up() {
-            currentIndex === 0 ? setIndex(1) : setIndex(0);
-        }
+        const interval = setInterval(function () {
+           setIndex(current => current === 2 ? 0 : current + 1);
+        }, 10000);
 
-        setTimeout(up, 10000);
+        return ()=> clearInterval(interval);
     }, [])
 
     return (
