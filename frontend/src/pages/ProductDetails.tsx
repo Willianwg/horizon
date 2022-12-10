@@ -11,6 +11,7 @@ import { AuthContext } from "../contexts/AuthContext";
 type Product = {
     name:string;
     description:string;
+    price:number;
     image:string;
 }
 
@@ -24,6 +25,7 @@ export function Details() {
     const [product, setProduct] = useState<Product>({
         name:'Test',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aut nulla, reprehenderit aspernatur deleniti earum. Quidem veritatis, nemo vero dolorem hic cupiditate dolor ad debitis placeat libero, facilis nihil at!',
+        price:149.99,
         image:'testimage.jpg'
     });
 
@@ -68,7 +70,7 @@ export function Details() {
                         <AiFillStar color="orange" />
                         <AiFillStar color="orange" />
                     </Stars>
-                    <Price><C>R$</C>{55.99}</Price>
+                    <Price><C>R$</C>{ product.price }</Price>
                     <Description>
                         <p>Descrição:</p>
                         <p>{ product.description }</p>
