@@ -28,7 +28,7 @@ export function Header(){
             <Navbar>
                 <LogoDiv>
                     <SiCashapp size={ 24 } color='white'/>
-                    <a style={{ textDecoration:'none' }} href="#"> <Logo>Horizon.br</Logo> </a>
+                    <a style={{ textDecoration:'none' }} href="/"> <Logo>Horizon.br</Logo> </a>
                 </LogoDiv> 
                 <HeaderBar/>
                 <Links>
