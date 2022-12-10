@@ -8,7 +8,7 @@ import { BiMenu } from "react-icons/bi";
 export function Header(){
     const auth = useContext(AuthContext);
     
-    function logOut(e:Event){
+    function logOut(e:React.MouseEvent<HTMLAnchorElement>){
         e.preventDefault();
         
         auth.logOut();
@@ -41,6 +41,7 @@ export function Header(){
                     <div>
                         <Click href="/cart">Cart</Click>
                     </div>
+                    { auth.user && <Click style={{ cursor:"pointer"} } onClick={logOut}>Logout</Click> }
                 </Links>
                 <Menu>
                     <BiMenu color="white" size={ 30 }/>

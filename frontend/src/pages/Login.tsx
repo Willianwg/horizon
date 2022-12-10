@@ -12,7 +12,7 @@ export function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         if (!email || !password) return alert("preencha todos os dados");
@@ -34,7 +34,7 @@ export function Login() {
                 <label>Email</label>
                 <Input value={email} onChange={e => setEmail(e.target.value)} />
                 <label>Password</label>
-                <Input value={password} onChange={e => setPassword(e.target.value)} /> <br />
+                <Input type="password" value={password} onChange={e => setPassword(e.target.value)} /> <br />
                 <Button type="submit" color="dark">Submit</Button>
             </Form>
         </Page>
