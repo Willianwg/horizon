@@ -3,11 +3,14 @@ import { styled } from "../stitches.config";
 
 export function Slider() {
     const [currentIndex, setIndex] = useState(0);
-    const images = [
+    const [translate, setTranslate] = useState('0');
+    const [transition, setTransition] = useState('transform 2s');
+
+    const [images, setImages] = useState([
         '../../public/banner01.jpg',
         '../../public/banner02.jpg',
         '../../public/banner03.jpg'
-    ];
+    ]);
 
     useEffect(() => {
 
@@ -17,6 +20,19 @@ export function Slider() {
 
         return ()=> clearInterval(interval);
     }, [])
+
+
+    function reorganize(){
+        setTransition('none');
+        setImages(image =>{
+            const [first, second, third] = image;
+ 
+             return [second, third, first];
+         });
+        setTranslate("0");
+        setTransition('transform 2s');
+    }
+
 
     return (
         <Container style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
