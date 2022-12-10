@@ -91,21 +91,27 @@ const Stars = styled("div", {
 });
 
 const Page = styled("div", {
-
+    display: "flex",
+    flexDirection: "column",
 });
 
 const Container = styled("div", {
+    alignSelf:"center",
+    width:"80%",
     boxSizing: "border-box",
     margin: 15,
     padding: 20,
     display: 'grid',
     gridTemplateColumns: '70fr 30fr',
     gridGap: '10px',
+    background:"white",
+    
     '@sm': {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
         justifyContent: "flex-start",
+        width:"90%",
     }
 });
 
@@ -113,6 +119,7 @@ const Image = styled("img", {
     width: '100%',
     backgroundSize:"cover",
     backgroundRepeat:"repeat",
+    backgroundPosition:"center",
     height: 500,
     '@sm':{
         height:300,
