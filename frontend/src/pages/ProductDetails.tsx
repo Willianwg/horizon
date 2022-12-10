@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { styled, globalStyles } from "../stitches.config";
 import { Header } from "../components/Header";
 import { useApi } from "../services/api";
@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { Button } from "../styles/styles";
 import { apiUrl } from '../ApiUrl';
+import { AuthContext } from "../contexts/AuthContext";
 
 type Product = {
     name:string;
@@ -14,6 +15,7 @@ type Product = {
 }
 
 export function Details() {
+    const auth = useContext(AuthContext);
     const api = useApi();
     const navigate = useNavigate();
     const location = useLocation();
@@ -43,6 +45,13 @@ export function Details() {
         return productId;
     }
 
+    function handleBuy(){
+        if(!auth.user){
+            return navigate("/login");
+        }
+        navigate(`${location.pathname}/checkout`)
+    }
+
 
     globalStyles();
 
@@ -65,7 +74,7 @@ export function Details() {
                         <p>{ product.description }</p>
                     </Description>
                     <Buttons>
-                    <Button color="dark" onClick={e => navigate(`${location.pathname}/checkout`)}>Comprar</Button>
+                    <Button color="dark" onClick={ handleBuy }>Comprar</Button>
                     <Button>Adicionar ao carrinho</Button>
                     </Buttons>
                 </Right>
