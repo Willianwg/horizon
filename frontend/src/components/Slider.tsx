@@ -15,27 +15,36 @@ export function Slider() {
     useEffect(() => {
 
         const interval = setInterval(function () {
-           setIndex(current => current === 2 ? 0 : current + 1);
-        }, 10000);
+            next();
+        }, 8000);
 
-        return ()=> clearInterval(interval);
+        return () => clearInterval(interval);
     }, [])
 
+    function next() {
+        setTranslate('-100%');
+        setTimeout(reorganize, 2000);
+    }
 
-    function reorganize(){
-        setTransition('none');
-        setImages(image =>{
+
+    function reorganize() {
+        setImages(image => {
             const [first, second, third] = image;
- 
-             return [second, third, first];
-         });
+
+            return [second, third, first];
+        });
+        setTransition('none');
         setTranslate("0");
-        setTransition('transform 2s');
+
+        setTimeout(() => {
+            setTransition('transform 2s');
+        }, 1000);
+
     }
 
 
     return (
-        <Container style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        <Container style={{ transform: `translateX(${translate})`, transition }}>
             {
                 images.map((image, index) => (
                     <Image key={index} style={{ backgroundImage: `linear-gradient(to top, rgba(221,221,221,1), rgba(221,221,221,0), rgba(0,0,0,0)), url(${image})` }} />
@@ -48,7 +57,6 @@ export function Slider() {
 
 const Container = styled("div", {
     whiteSpace: "nowrap",
-    transition: "transform 2s",
 })
 
 const Image = styled("div", {
@@ -56,6 +64,7 @@ const Image = styled("div", {
     height: 400,
     backgroundSize: "cover",
     width: "100%",
+    cursor:"pointer",
 
     "@sm": {
         display: "none"
