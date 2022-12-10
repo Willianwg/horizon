@@ -64,6 +64,7 @@ export function Details() {
             <Container>
                 <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ product.image })` }} />
                 <Right>
+                    <div>
                     <ProductName>{ product.name }</ProductName>
                     <Stars>
                         <AiFillStar color="orange" />
@@ -71,11 +72,12 @@ export function Details() {
                         <AiFillStar color="orange" />
                         <AiFillStar color="orange" />
                     </Stars>
+                    </div>
                     <Price><C>R$</C>{ product.price }</Price>
-                    <Description>
-                        <p>Descrição:</p>
-                        <p>{ product.description }</p>
-                    </Description>
+                    <DescriotionContainer>
+                        <Description>Descrição:</Description>
+                        <Description>{ product.description }</Description>
+                    </DescriotionContainer>
                     <Buttons>
                     <Button color="dark" onClick={ handleBuy }>Comprar</Button>
                     <Button>Adicionar ao carrinho</Button>
@@ -89,7 +91,9 @@ export function Details() {
 
 
 const Stars = styled("div", {
-
+    "@sm":{
+        marginBottom:5,
+    }
 });
 
 const Page = styled("div", {
@@ -117,7 +121,7 @@ const Container = styled("div", {
     }
 });
 
-const Image = styled("img", {
+const Image = styled("div", {
     width: '100%',
     backgroundSize:"cover",
     backgroundRepeat:"repeat",
@@ -129,7 +133,7 @@ const Image = styled("img", {
 });
 
 const ProductName = styled("h2", {
-    margin:0,
+    margin:"9px 0px",
 })
 
 
@@ -139,6 +143,10 @@ const Price = styled("h3", {
     fontWeight:500,
 })
 
+
+const DescriotionContainer = styled("section", {
+   marginBottom:20,
+})
 const Description = styled("p", {
     '@md':{
         fontSize:'14px'
