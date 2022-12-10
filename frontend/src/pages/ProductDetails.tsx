@@ -7,6 +7,7 @@ import { AiFillStar } from "react-icons/ai";
 import { Button } from "../styles/styles";
 import { apiUrl } from '../ApiUrl';
 import { AuthContext } from "../contexts/AuthContext";
+import { Footer } from "../components/Footer";
 
 type Product = {
     name:string;
@@ -81,6 +82,7 @@ export function Details() {
                     </Buttons>
                 </Right>
             </Container>
+            <Footer/>
         </Page>
     )
 }
