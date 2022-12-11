@@ -123,8 +123,8 @@ const Container = styled("div", {
 
 const Image = styled("div", {
     width: '100%',
-    backgroundSize:"cover",
-    backgroundRepeat:"repeat",
+    backgroundSize:"contain",
+    backgroundRepeat:"no-repeat",
     backgroundPosition:"center",
     height: 500,
     '@sm':{

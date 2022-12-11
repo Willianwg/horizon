@@ -61,8 +61,9 @@ const DataContainer = styled("div",{
 const Image = styled("img", {
     height:200,
     width:'100%',
-    backgroundSize:"cover",
-    backgroundRepeat:"repeat",
+    backgroundSize:"contain",
+    backgroundRepeat:"no-repeat",
+    backgroundPosition:"center",
     marginRight:10,
 });
 
