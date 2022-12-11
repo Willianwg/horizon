@@ -1,5 +1,5 @@
 const ProductRepository = require("../repositories/Postgres/Product");
-
+const createExamples = require("../examples/createExamples");
 
 function ProductController(repository) {
     const database = repository || new ProductRepository();
@@ -21,8 +21,6 @@ function ProductController(repository) {
         
         const newProduct = await database.createProduct(name, formatedPrice, description, sellerId, filename);
         
-        console.log(newProduct);
-        
         return res.json(newProduct);
         
     }
@@ -39,6 +37,14 @@ function ProductController(repository) {
     async function index (req, res){
         
         const productsList = await database.findAllProducts();
+
+        if(productsList.length === 0){
+            const examples = await createExamples();
+            if(examples){
+                const example_products = await database.findAllProducts();
+                return res.json(example_products);
+            }
+        }
         
         return res.json(productsList);
         
