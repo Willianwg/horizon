@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Page, Input, Button, Form } from "../styles/styles";
+import { Page, Input, Button, Form, SignLinkContainer, SignLink } from "../styles/styles";
 
 export function SignUp() {
     const auth = useContext(AuthContext);
@@ -52,6 +52,9 @@ export function SignUp() {
                 </TextInput>
 
                 <Button color="dark" type="submit" css={{ display: "block", marginLeft: "auto", marginTop: 10 }}>Submit</Button>
+                <SignLinkContainer>
+                    <SignLink href="/login">Fazer login</SignLink>
+                </SignLinkContainer>
             </Form>
         </Page>
 

@@ -62,3 +62,16 @@ export const Form = styled("form", {
     widht:"90%"
 });
 
+export const SignLinkContainer = styled("div", {
+    width:"100%",
+    marginTop:10,
+    textAlign:"center",
+})
+
+export const SignLink = styled("a", {
+    color:"blue",
+    "&:hover":{
+        color:"red"
+    }
+})
+
