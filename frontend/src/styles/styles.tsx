@@ -35,6 +35,10 @@ export const Button = styled("button",{
         color:{
             dark:{
                 background: "rgb(50,100,250)",
+            },
+            light:{
+                background: "rgb(220,220,250)",
+                color:"rgb(50,100,250)",
             }
         }
     }

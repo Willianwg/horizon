@@ -80,7 +80,7 @@ export function Details() {
                     </DescriotionContainer>
                     <Buttons>
                     <Button color="dark" onClick={ handleBuy }>Comprar</Button>
-                    <Button>Adicionar ao carrinho</Button>
+                    <Button color="light">Adicionar ao carrinho</Button>
                     </Buttons>
                 </Right>
             </Container>
