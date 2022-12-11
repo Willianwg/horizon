@@ -59,9 +59,20 @@ export function Search(){
 }
 
 const Container = styled("div",{
-    
-    height:500,
-    backgroundColor:"white",
-    borderRadius:5,
+    padding: 30,
+    display: "grid",
+    gridColumnGap: "10px",
+    gridTemplateColumns: "1fr 1fr 1fr 1fr",
+    gridRowGap: "20px",
+    justifyItems: "center",
+    maxWidth:1750,
+    alignSelf:"center",
+
+    "@sm": {
+        display: "flex",
+        flexDirection: "column",
+        padding: 20,
+        position:"static",
+    }
     
 })
