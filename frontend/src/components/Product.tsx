@@ -2,7 +2,6 @@ import { styled } from "../stitches.config";
 import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from '../ApiUrl';
-import { useEffect } from "react";
 
 type NameProps={
     productName: string;
@@ -16,10 +15,6 @@ export function Product(props:NameProps) {
     const navigate = useNavigate();
     
     const seeDetails = ()=> navigate(`/details/${props.id}`);
-    
-    useEffect(()=>{
-        console.log(`url(${ apiUrl +'/files/'+ props.url})`)
-    }, [])
 
     return (
        
