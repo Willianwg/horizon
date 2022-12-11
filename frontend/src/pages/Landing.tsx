@@ -80,6 +80,8 @@ export function LandingPage() {
 
 const Page = styled("div", {
     overflow:"hidden",
+    display:"flex",
+    flexDirection:"column",
 })
 
 const Container = styled("div", {
@@ -91,6 +93,8 @@ const Container = styled("div", {
     justifyItems: "center",
     position:"relative",
     bottom:170,
+    maxWidth:1750,
+    alignSelf:"center",
 
     "@sm": {
         display: "flex",
