@@ -29,7 +29,7 @@ export function Product(props:NameProps) {
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
                </Stars>
-                <Price>R${ props.price }</Price>
+                <Price>R${ Number(props.price).toFixed(2) }</Price>
             </Info>
          </DataContainer>
        
