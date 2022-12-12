@@ -21,11 +21,20 @@ export function HeaderBar(){
         navigate(`/search?pname=${unaccentedText}`);
         return 
     }
+
+    function handleKeyDown(e: React.KeyboardEvent<HTMLElement>){
+        if(e.key === "Enter"){
+            const button : HTMLButtonElement | null = document.querySelector(".btn");
+            if(!button) return;
+
+            button.click();
+        }
+    }
     
     return(
         <Div>
-          <Bar placeholder="Pesquisa Horizon.com" onChange={ e => setProductName(e.target.value) }/>
-          <Button onClick={ handleSubmit }><BiSearchAlt size={23}/></Button>
+          <Bar onKeyDown={ handleKeyDown } placeholder="Pesquisa Horizon.com" onChange={ e => setProductName(e.target.value) }/>
+          <Button className="btn" onClick={ handleSubmit }><BiSearchAlt size={23}/></Button>
         </Div>
     )
 }
