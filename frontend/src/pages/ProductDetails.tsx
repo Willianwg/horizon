@@ -31,7 +31,7 @@ export function Details() {
     });
 
     useEffect(() => {
-
+        window.scrollTo(0,0);
         async function loadProduct() {
             const data = await api.getProductDetails(id);
 
