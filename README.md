@@ -1,4 +1,4 @@
-# horizon
+# Horizon
 
 Horizon é a ideia de um marketplace feito para fins de aprendizado. Foco maior no back-end, e um front-end mais simplificado.
 
