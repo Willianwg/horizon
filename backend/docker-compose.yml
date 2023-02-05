@@ -1,10 +1,39 @@
 version: '3'
 
 services:
+  app:
+    build: .
+    container_name: node-app
+    depends_on:
+      - redis
+    ports:
+      - 3000:3000
+    links:
+      - redis
+      - db
+    volumes:
+      - ./:/usr/app
+    environment:
+    - DATABASE_DIALECT=postgres
+    - DATABASE_HOST=localhost
+    - DATABASE_DB=postgres
+    - DB_USERNAME=postgres
+    - DATABASE_PASSWORD=horizon
+    - JWT_SECRET=horizon
+
   db:
     image: postgres:15
     restart: always
     environment:
     - POSTGRES_PASSWORD=horizon
     ports:
-      - '5432:5432'
+      - 5432
+    expose:
+      - 5432
+  
+  redis:
+    image: redis:7
+    expose:
+      - 6379
+    ports:
+      - 5432

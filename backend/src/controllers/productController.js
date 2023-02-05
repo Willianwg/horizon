@@ -1,5 +1,6 @@
 const ProductRepository = require("../repositories/Postgres/Product");
 const createExamples = require("../examples/createExamples");
+const { getCache, setCache } = require("../connect/redis");
 
 function ProductController(repository) {
     const database = repository || new ProductRepository();
@@ -35,6 +36,12 @@ function ProductController(repository) {
     }
     
     async function index (req, res){
+
+        const cachedProducts = await getCache("products");
+        if(cachedProducts){
+            console.log("Cached");
+            return res.json(cachedProducts);
+        }
         
         const productsList = await database.findAllProducts();
 
@@ -46,6 +53,8 @@ function ProductController(repository) {
             }
         }
         
+        await setCache('products', productsList);
+
         return res.json(productsList);
         
     }

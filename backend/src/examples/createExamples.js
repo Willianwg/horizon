@@ -4,12 +4,22 @@ const exampleProducts = require("./products");
 
 module.exports = async () => {
     await Seller.create({
-        name:"Willian",
-        email:"Willian.wg70@gmail.com",
-        password:"test"
+        name: "Willian",
+        email: "Willian.wg70@gmail.com",
+        password: "test"
     });
 
-    const newProduct = await Product.bulkCreate(exampleProducts);
+    let count = 0;
+    const example_products = [];
+
+    while (count < 10) {
+        example_products.push(...exampleProducts)
+
+
+        count++;
+    }
+
+    const newProduct = await Product.bulkCreate(example_products);
 
     return !!newProduct;
 }
