@@ -83,6 +83,7 @@ export function Details() {
                         <AiFillStar color="orange" />
                         <AiFillStar color="orange" />
                         <AiFillStar color="orange" />
+                        <AiFillStar color="orange" />
                     </Stars>
                     </div>
                     <Price>
