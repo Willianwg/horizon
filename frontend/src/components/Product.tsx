@@ -56,7 +56,6 @@ const DataContainer = styled("div",{
     flexDirection:"column",
     marginBottom:5,
     overflow:"hidden",
-    userSelect:"none",
     fontFamily:"Segoe UI",
     minWidth:250,
     maxWidth:300,

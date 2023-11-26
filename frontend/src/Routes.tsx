@@ -32,7 +32,7 @@ export function AppRoutes(){
           <Route path="/details/:id" element={ <Details/> }/>
           <Route path="/details/:id/checkout" element={ <Checkout/> }/>
           <Route path="/new-product" element={ <NewProduct/> }/>
-          <Route path="/cart" element={ <Cart/> }/>
+          {/* <Route path="/cart" element={ <Cart/> }/> */}
         
         </Routes>
        </AuthProvider>

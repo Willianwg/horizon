@@ -38,9 +38,9 @@ export function Header(){
                   
                         { !auth.user && joinLinks() }
                        
-                    <div>
+                    {/* <div>
                         <Click href="/cart">Carrinho</Click>
-                    </div>
+                    </div> */}
                     { auth.user && <Click style={{ cursor:"pointer"} } onClick={logOut}>Sair</Click> }
                 </Links>
                 <Menu>
