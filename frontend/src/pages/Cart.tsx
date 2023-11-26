@@ -31,9 +31,9 @@ export function Cart(){
             
          const test = [{
                 id:12,
-                name:"produto",
+                name:"Produto Teste",
                 price:50.99,
-                description:"descricao teste",
+                description:"descricao asdfjksdf asjdfhkasjdfha sdfjksahdfkjashdf aksjdfhkasjfhd sadfjhaskf",
                 sellerId:12,
                 seller:{ name:"Willian"},
                 createdAt:"wksodjdk",
@@ -57,7 +57,7 @@ export function Cart(){
           <Container>
           {
              products.map(product=>{
-                 return <Product key={ product.id } productName={ product.name } sellerName={product.seller.name} price={ product.price } id={ product.id } url={ product.image }/>
+                 return <Product key={ product.id } data={product}/>
              })
           }
           </Container>

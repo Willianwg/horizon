@@ -58,7 +58,7 @@ export function Search(){
         }
 
         return products.map(product=>{
-                return <Product key={ product.id } productName={ product.name } price={ product.price }  id={ product.id } url={ product.image } sellerName={ product.seller.name } description={product.description}/>
+                return <Product key={ product.id } data={ product }/>
         })
     }
     

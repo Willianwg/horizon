@@ -3,35 +3,46 @@ import { AiFillStar } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { apiUrl } from '../ApiUrl';
 
-type NameProps={
-    productName: string;
+export type ProductProps = {
+    id: number;
+    name: string;
     price: number;
-    sellerName: string;
-    id:number;
-    url:string;
-    description?: string;
+    description: string;
+    image: string;
+    sellerId: number;
+    seller: {
+        name: string
+    };
+    createdAt: string;
+    updatedAt: string;
 }
 
-export function Product(props:NameProps) {
+type PropsType = {
+    data: ProductProps
+}
+
+export function Product({ data }:PropsType) {
     const navigate = useNavigate();
     
-    const seeDetails = ()=> navigate(`/details/${props.id}`);
+    const seeDetails = ()=> navigate(`/details/${data.id}`);
+    const imageUrl = apiUrl +'/files/'+ data.image;
 
     return (
        
          <DataContainer  >
-            <Image src={apiUrl +'/files/'+ props.url} onClick={ seeDetails } />
+            <Image src={imageUrl} onClick={ seeDetails } />
             <Info>
-                <ProductName onClick={ seeDetails }>{ props.productName }</ProductName>
-                <Seller>por: { props.sellerName }</Seller>
+                <ProductName onClick={ seeDetails }>{ data.name }</ProductName>
+                <Seller>por: { data.seller.name }</Seller>
                <Stars>
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
+                <AiFillStar color="orange"/>
                </Stars>
-                <Price onClick={ seeDetails }>{ Number(props.price).toLocaleString('pt-BR', { currency:'BRL', style:'currency' }) }</Price>
-                <Description>{props.description ?? ''}</Description>
+                <Price onClick={ seeDetails }>{ Number(data.price).toLocaleString('pt-BR', { currency:'BRL', style:'currency' }) }</Price>
+                <Description>{data.description ?? ''}</Description>
             </Info>
          </DataContainer>
        

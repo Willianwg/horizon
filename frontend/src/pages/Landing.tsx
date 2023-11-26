@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Product } from "../components/Product";
+import { Product, ProductProps } from "../components/Product";
 import { styled, globalStyles } from "../stitches.config";
 import api from "../services/api";
 import { Header } from "../components/Header";
@@ -7,22 +7,6 @@ import { SearchBar } from "../components/SearchBar";
 import { Footer } from "../components/Footer";
 import { Slider } from "../components/Slider";
 import Loader from "../components/Loader";
-
-type SellerProps = {
-    name: string;
-}
-
-type ProductProps = {
-    id: number;
-    name: string;
-    price: number;
-    description: string;
-    image: string;
-    sellerId: number;
-    seller: SellerProps;
-    createdAt: string;
-    updatedAt: string;
-}
 
 export function LandingPage() {
     const [products, setProducts] = useState<ProductProps[]>([]);
@@ -66,12 +50,12 @@ export function LandingPage() {
     function renderProducts(){
         if(!products.length){
             return example.map(product => {
-                return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
+                return <Product key={product.id} data={ product } />
             })
         }
 
         return products.map(product => {
-            return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} description={product.description} />
+            return <Product key={product.id}  data={ product } />
         })
     }
 
