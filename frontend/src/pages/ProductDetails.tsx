@@ -8,6 +8,7 @@ import { Button } from "../styles/styles";
 import { apiUrl } from '../ApiUrl';
 import { AuthContext } from "../contexts/AuthContext";
 import { Footer } from "../components/Footer";
+import LoaderComponent from "../components/Loader";
 
 type Product = {
     name:string;
@@ -22,12 +23,13 @@ export function Details() {
     const navigate = useNavigate();
     const location = useLocation();
     const id = getIdFromUrl();
+    const [isLoading, setLoading] = useState(true);
 
     const [product, setProduct] = useState<Product>({
         name:'Test',
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis aut nulla, reprehenderit aspernatur deleniti earum. Quidem veritatis, nemo vero dolorem hic cupiditate dolor ad debitis placeat libero, facilis nihil at!',
         price:149.99,
-        image:'testimage.jpg'
+        image:'product-test-fake-url.jpg'
     });
 
     useEffect(() => {
@@ -36,6 +38,7 @@ export function Details() {
             const data = await api.getProductDetails(id);
 
             setProduct(data);
+            setLoading(false);
         }
 
         loadProduct();
@@ -58,11 +61,20 @@ export function Details() {
 
     globalStyles();
 
+    if(isLoading)
+        return (
+            <Page>
+                <Header />
+                <LoaderComponent />
+                <Footer/>
+            </Page>
+        )
+
     return (
         <Page>
             <Header />
             <Container>
-                <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ product.image })` }} />
+                <Image src={apiUrl +'/files/'+ product.image}/>
                 <Right>
                     <div>
                     <ProductName>{ product.name }</ProductName>
@@ -73,7 +85,16 @@ export function Details() {
                         <AiFillStar color="orange" />
                     </Stars>
                     </div>
-                    <Price><C>R$</C>{ product.price }</Price>
+                    <Price>
+                        { 
+                            Number(product.price).toLocaleString('pt-BR', { 
+                                style: 'currency',
+                                currency: 'BRL' ,
+                                minimumFractionDigits: 2, 
+                                maximumFractionDigits: 2
+                            })
+                        }
+                    </Price>
                     <DescriotionContainer>
                         <Description>Descrição:</Description>
                         <Description>{ product.description }</Description>
@@ -121,11 +142,10 @@ const Container = styled("div", {
     }
 });
 
-const Image = styled("div", {
+const Image = styled("img", {
     width: '100%',
-    backgroundSize:"contain",
-    backgroundRepeat:"no-repeat",
-    backgroundPosition:"center",
+    objectFit:"contain",
+    objectPosition:"center",
     height: 500,
     '@sm':{
         height:300,
@@ -140,7 +160,7 @@ const ProductName = styled("h2", {
 const Price = styled("h3", {
     margin:0,
     fontSize:'25pt',
-    fontWeight:500,
+    fontWeight:400,
 })
 
 
@@ -148,6 +168,7 @@ const DescriotionContainer = styled("section", {
    marginBottom:20,
 })
 const Description = styled("p", {
+    color:'Gray',
     '@md':{
         fontSize:'14px'
     }

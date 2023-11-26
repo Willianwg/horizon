@@ -6,6 +6,7 @@ import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
 import { Footer } from "../components/Footer";
 import { Slider } from "../components/Slider";
+import Loader from "../components/Loader";
 
 type SellerProps = {
     name: string;
@@ -25,9 +26,10 @@ type ProductProps = {
 
 export function LandingPage() {
     const [products, setProducts] = useState<ProductProps[]>([]);
+    const [isLoading, setLoading] = useState(true);
     const example = [{
         id: 12,
-        name: "produto",
+        name: "Produto Teste",
         price: 50.99,
         description: "descricao teste",
         sellerId: 12,
@@ -43,6 +45,7 @@ export function LandingPage() {
             const response = await api.get<ProductProps[]>("/product");
 
             setProducts(response.data);
+            setLoading(false)
         };
 
         loadProducts();
@@ -50,6 +53,27 @@ export function LandingPage() {
     }, []);
 
     globalStyles();
+
+    if(isLoading) return (
+    <Page>
+        <Header />
+        <SearchBar />
+        <Loader />
+        <Footer />
+    </Page>
+    )
+
+    function renderProducts(){
+        if(!products.length){
+            return example.map(product => {
+                return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
+            })
+        }
+
+        return products.map(product => {
+            return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
+        })
+    }
 
     return (
         <Page>
@@ -59,15 +83,7 @@ export function LandingPage() {
             <Container>
 
                 {
-                    products.length === 0 && (example.map(product => {
-                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
-                    }))
-                }
-
-                {
-                    products.map(product => {
-                        return <Product key={product.id} productName={product.name} price={product.price} sellerName={product.seller.name} id={product.id} url={product.image} />
-                    })
+                  renderProducts()
                 }
 
             </Container>

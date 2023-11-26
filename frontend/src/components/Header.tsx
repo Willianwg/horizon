@@ -55,7 +55,7 @@ export function Header(){
 const Navbar = styled('nav', {
     background:'black',
     color:'#00ff88',
-    padding:10,
+    padding:"0.5rem 2rem",
     display:'flex',
     alignItems:'center',
     justifyContent:'space-between',

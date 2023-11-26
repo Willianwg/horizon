@@ -1,1 +1,1 @@
-export const apiUrl = 'http://localhost:3000';
+export const apiUrl = 'https://3000-willianwg-horizon-xwxbbk9s2jf.ws-us106.gitpod.io';

@@ -18,10 +18,10 @@ export function Product(props:NameProps) {
 
     return (
        
-         <DataContainer onClick={ seeDetails } >
-            <Image style={{ backgroundImage:`url(${ apiUrl +'/files/'+ props.url})` }}/>
+         <DataContainer  >
+            <Image src={apiUrl +'/files/'+ props.url} onClick={ seeDetails } />
             <Info>
-                <ProductName>{ props.productName }</ProductName>
+                <ProductName onClick={ seeDetails }>{ props.productName }</ProductName>
                 <Seller>por: { props.sellerName }</Seller>
                <Stars>
                 <AiFillStar color="orange"/>
@@ -29,7 +29,7 @@ export function Product(props:NameProps) {
                 <AiFillStar color="orange"/>
                 <AiFillStar color="orange"/>
                </Stars>
-                <Price>R${ Number(props.price).toFixed(2) }</Price>
+                <Price onClick={ seeDetails }>{ Number(props.price).toLocaleString('pt-BR', { currency:'BRL', style:'currency' }) }</Price>
             </Info>
          </DataContainer>
        
@@ -41,30 +41,26 @@ const DataContainer = styled("div",{
     background:"white",
     display:"flex",
     flexDirection:"column",
-    cursor:"auto",
     marginBottom:5,
     overflow:"hidden",
     userSelect:"none",
-    boxShadow:"0px 10px 45px -20px black",
     fontFamily:"Segoe UI",
     minWidth:250,
     maxWidth:300,
+    paddingBlock:20,
 
     "@sm":{
         width:"100%",
-    },
-    "&:active":{
-        backgroundColor:"rgba(100,190,250, 0.3)",   
     },
 });
 
 const Image = styled("img", {
     height:200,
     width:'100%',
-    backgroundSize:"contain",
-    backgroundRepeat:"no-repeat",
-    backgroundPosition:"center",
+    objectFit:"contain",
+    objectPosition:"center",
     marginRight:10,
+    cursor:"pointer",
 });
 
 
@@ -74,7 +70,9 @@ const Info = styled("div",{
 
 const Price = styled("p",{
     fontSize:20,
+    fontWeight: 600,
     lineHeight:0,
+    cursor:"pointer",
 });
 
 const Stars = styled("div",{
@@ -86,6 +84,12 @@ const ProductName = styled("p",{
     fontSize:16,
     fontWeight:550,
     lineHeight:1,
+    width:'fit-content',
+    cursor:"pointer",
+
+    '&:hover':{
+        color: '#E6AE2C'
+    }
 });
 
 const Seller = styled("p",{

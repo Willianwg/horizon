@@ -5,6 +5,8 @@ import { SearchBar } from "../components/SearchBar";
 import { Header } from "../components/Header";
 import { Product } from "../components/Product";
 import { styled} from "../stitches.config";
+import NoResultsPage from "../components/Not-fount";
+import LoaderComponent from "../components/Loader";
 
 type SellerProps ={
     name:string;
@@ -26,29 +28,46 @@ export function Search(){
     const [searchParams] = useSearchParams();
     
     const [products, setProducts] = useState<ProductProps[]>([]);
+    const [isLoading, setLoading] = useState(true);
     
     useEffect(()=>{
         
         async function loadProducts(){
-            
-        const response = await api.get<ProductProps[]>(`/search?${ searchParams }`);
-        setProducts(response.data);
+            const response = await api.get<ProductProps[]>(`/search?${ searchParams }`);
+            setProducts(response.data);
+            setLoading(false)
         }
         
         loadProducts();
         
     },[searchParams])
+
+    if(isLoading){
+        return (
+        <>
+            <Header />
+            <SearchBar />
+            <LoaderComponent />
+        </>
+      )
+    }
+
+    function renderProducts(){
+        if(!products.length){
+            return <NoResultsPage />
+        }
+
+        return products.map(product=>{
+                return <Product key={ product.id } productName={ product.name } price={ product.price }  id={ product.id } url={ product.image } sellerName={ product.seller.name }/>
+        })
+    }
     
     return (
         <>
           <Header />
           <SearchBar />
           <Container>
-          {
-             products.map(product=>{
-                 return <Product key={ product.id } productName={ product.name } price={ product.price }  id={ product.id } url={ product.image } sellerName={ product.seller.name }/>
-             })
-          }
+            { renderProducts()}
           </Container>
         </>
         
