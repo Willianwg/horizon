@@ -53,10 +53,9 @@ const Div = styled('div',{
 const Bar = styled("input",{
     borderRadius:5,
     height:40,
-    padding:2,
+    padding:10,
     width:"70%",
     margin:2,
-    paddingLeft:5,
     borderWidth:1,
     borderColor:"rgba(240,240,240,0.4)",
     outline:'none',

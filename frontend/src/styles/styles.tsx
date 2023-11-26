@@ -8,7 +8,7 @@ export const Input = styled("input",{
     height:30,
     marginBottom:15,
     border:"1px black solid",
-    padding:5,
+    padding:10,
     outline:"none",
     borderRadius:3,
     borderColor:"grey",
@@ -58,7 +58,7 @@ export const Form = styled("form", {
     padding:20,
     background:"white",
     borderRadius:5,
-    boxShadow: '0px 10px 40px -14px black',
+     boxShadow: '0px 10px 40px -14px gray',
     widht:"90%"
 });
 
@@ -73,5 +73,9 @@ export const SignLink = styled("a", {
     "&:hover":{
         color:"red"
     }
+})
+
+export const Label = styled("label", {
+    fontWeight:600,
 })
 

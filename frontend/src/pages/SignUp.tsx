@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
-import { Page, Input, Button, Form, SignLinkContainer, SignLink } from "../styles/styles";
+import { Page, Input, Button, Form, SignLinkContainer, SignLink, Label } from "../styles/styles";
 
 export function SignUp() {
     const auth = useContext(AuthContext);
@@ -37,21 +37,21 @@ export function SignUp() {
 
         <Page>
             <Form onSubmit={handleSubmit}>
-                <h1>Sign up</h1>
+                <h1 style={{ textAlign:'center'}}>Sign up</h1>
                 <TextInput>
-                    <label>Name</label>
-                    <Input onChange={e => setName(e.target.value)} />
+                    <Label>Nome</Label>
+                    <Input onChange={e => setName(e.target.value)} placeholder="Digite seu nome"/>
                 </TextInput>
                 <TextInput>
-                    <label>Email</label>
-                    <Input onChange={e => setEmail(e.target.value)} type="email" />
+                    <Label>Email</Label>
+                    <Input onChange={e => setEmail(e.target.value)} type="email" placeholder="Digite seu email"/>
                 </TextInput>
                 <TextInput>
-                    <label>Password</label>
-                    <Input type="password" onChange={e => setPassword(e.target.value)} />
+                    <Label>Senha</Label>
+                    <Input type="password" onChange={e => setPassword(e.target.value)}  placeholder="Digite sua senha"/>
                 </TextInput>
 
-                <Button color="dark" type="submit" css={{ display: "block", marginLeft: "auto", marginTop: 10 }}>Submit</Button>
+                <Button color="dark" type="submit" css={{ display: "block", marginLeft: "auto", marginTop: 10 }}>Registrar</Button>
                 <SignLinkContainer>
                     <SignLink href="/login">Fazer login</SignLink>
                 </SignLinkContainer>
@@ -63,5 +63,6 @@ export function SignUp() {
 
 const TextInput = styled("div", {
 });
+
 
 

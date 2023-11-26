@@ -9,6 +9,7 @@ type NameProps={
     sellerName: string;
     id:number;
     url:string;
+    description?: string;
 }
 
 export function Product(props:NameProps) {
@@ -30,6 +31,7 @@ export function Product(props:NameProps) {
                 <AiFillStar color="orange"/>
                </Stars>
                 <Price onClick={ seeDetails }>{ Number(props.price).toLocaleString('pt-BR', { currency:'BRL', style:'currency' }) }</Price>
+                <Description>{props.description ?? ''}</Description>
             </Info>
          </DataContainer>
        
@@ -73,6 +75,16 @@ const Price = styled("p",{
     fontWeight: 600,
     lineHeight:0,
     cursor:"pointer",
+});
+const Description = styled("p",{
+    fontSize:14,
+    fontWeight:500,
+    color:'#666666',
+    display: '-webkit-box',
+    WebkitBoxOrient: 'vertical',
+    overflow: 'hidden',
+    WebkitLineClamp: 3,
+    textOverflow: 'ellipsis',
 });
 
 const Stars = styled("div",{

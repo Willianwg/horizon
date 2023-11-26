@@ -168,7 +168,9 @@ const DescriotionContainer = styled("section", {
    marginBottom:20,
 })
 const Description = styled("p", {
-    color:'Gray',
+    fontSize:16,
+    fontWeight:500,
+    color:'#666666',
     '@md':{
         fontSize:'14px'
     }

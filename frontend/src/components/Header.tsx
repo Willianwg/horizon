@@ -17,8 +17,8 @@ export function Header(){
     function joinLinks():JSX.Element{
         return(
             <div>
-                <Click href="/signup">SignUp</Click>
-                <Click href="/logIn">Login</Click>
+                <Click href="/signup">Registrar</Click>
+                <Click href="/logIn">Entrar</Click>
             </div>
         )
     }
@@ -39,9 +39,9 @@ export function Header(){
                         { !auth.user && joinLinks() }
                        
                     <div>
-                        <Click href="/cart">Cart</Click>
+                        <Click href="/cart">Carrinho</Click>
                     </div>
-                    { auth.user && <Click style={{ cursor:"pointer"} } onClick={logOut}>Logout</Click> }
+                    { auth.user && <Click style={{ cursor:"pointer"} } onClick={logOut}>Sair</Click> }
                 </Links>
                 <Menu>
                     <BiMenu color="white" size={ 30 }/>

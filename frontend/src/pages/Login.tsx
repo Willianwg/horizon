@@ -3,7 +3,7 @@ import { styled, globalStyles } from "../stitches.config";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { Input, Button, Form, Page, SignLinkContainer, SignLink } from "../styles/styles";
+import { Input, Button, Form, Page, SignLinkContainer, SignLink, Label } from "../styles/styles";
 
 export function Login() {
     const auth = useContext(AuthContext);
@@ -30,12 +30,21 @@ export function Login() {
     return (
         <Page>
             <Form onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <label>Email</label>
-                <Input value={email} onChange={e => setEmail(e.target.value)} />
-                <label>Password</label>
-                <Input type="password" value={password} onChange={e => setPassword(e.target.value)} /> <br />
-                <Button type="submit" color="dark">Submit</Button>
+                <h1 style={{ textAlign:'center'}}>Login</h1>
+                <Label>Email</Label>
+                <Input 
+                    value={email} 
+                    onChange={e => setEmail(e.target.value)} 
+                    placeholder="Digite seu email"
+                />
+                <Label>Senha</Label>
+                <Input 
+                    type="password" 
+                    value={password} 
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="Digite sua senha"
+                /> <br />
+                <Button type="submit" color="dark">Entrar</Button>
 
                 <SignLinkContainer>
                     <SignLink href="/signup">Não possui conta? Cadastre-se</SignLink>

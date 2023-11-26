@@ -10,7 +10,7 @@ type SellerProps ={
 }
 
 type ProductProps ={
-    id:string;
+    id:number;
     name:string;
     price:number;
     description:string;
@@ -38,7 +38,7 @@ export function Cart(){
                 seller:{ name:"Willian"},
                 createdAt:"wksodjdk",
                 updatedAt:"sjdkdjdisi",
-                image:"Screenshot_2022-08-08-01-46-35-281_com.linkedin.android~1660696511252.jpg"
+                image: "product-test-fake-url.jpg"
             }]
             
             setProducts(test);

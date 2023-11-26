@@ -62,12 +62,12 @@ export function NewProduct() {
             <Container>
                 <Form action="/profile" method="post" enctype="multipart/form-data" onSubmit={handleSubmit}>
                     <Left>
-                        <Image id="thumbnail" style={preview ? { backgroundImage: `url(${preview})` } : { background: "lightGrey" }} />
+                        <Image src={preview ?? 'https://th.bing.com/th/id/OIP.q8y5slEM6r0N1U-hjtoe6QAAAA?pid=ImgDet&w=238&h=250&rs=1'} id="thumbnail" />
                         <FileUpload type="file" name="image" onChange={event => setImage(event.target.files[0])} />
                     </Left>
                     <Right>
                         <TextInput>
-                            <Label><p>Nome do produto</p></Label>
+                            <Label><p>Nome</p></Label>
                             <Input onChange={e => setProductName(e.target.value)} />
                         </TextInput>
 
@@ -82,12 +82,12 @@ export function NewProduct() {
                         </TextInput>
 
                         <TextInput>
-                            <Label><p>Id de vendedor</p></Label>
+                            <Label><p>ID do vendedor</p></Label>
                             <Input onChange={e => setId(e.target.value)} />
                         </TextInput>
 
                         <br /><br />
-                        <Button type="submit">ENVIAR</Button>
+                        <Button type="submit">Enviar</Button>
                     </Right>
                 </Form>
             </Container>
@@ -97,7 +97,7 @@ export function NewProduct() {
 }
 
 const Page = styled("div", {
-    background: "#dddd",
+    background: "white",
     height: "100vh",
     "@md": {
         height: "100%",
@@ -133,6 +133,8 @@ const Form = styled("form", {
 
 const Image = styled("img", {
     justifySelf: "center",
+    objectFit:'cover',
+    objectPosition:'center',
     width: "100%",
     height: 350,
     gridColumn: '1/2',
