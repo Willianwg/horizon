@@ -67,7 +67,7 @@ const Button = styled("button",{
     height:40,
     width:"15%",
     padding:2,
-    background:"#E6AE2C",
+    backgroundColor:"#FAB446",
     borderWidth:0,
     maxWidth:60,
     cursor:'pointer',
