@@ -59,7 +59,8 @@ export  function Login() {
                             </Label>
                             <Link
                             className="text-sm text-yellow-500 hover:text-yellow-700 dark:hover:text-yellow-300"
-                            href="#"
+                            onClick={()=>alert("Se ferrou kkkkkkkkkkkkkk")}
+                            style={{ cursor:'pointer'}}
                             rel="ugc"
                             >
                             Esqueceu sua senha?
